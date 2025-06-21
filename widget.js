@@ -56,7 +56,7 @@ const DEFAULT_WIDGET_CONFIG = {
   button: {
     size: '55px',
     borderRadius: '1000px',
-    iconSize: '28px',
+    iconSize: '40px',
     shadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
   },
   
@@ -154,7 +154,7 @@ const styles = `
     height: 100vh;
     overflow-y: auto;
     background-color: ${WIDGET_CONFIG.colors.secondary};
-    padding: ${WIDGET_CONFIG.menu.padding};
+    padding: 0;
     display: none;
     font-family: ${WIDGET_CONFIG.typography.fontFamily};
     z-index: 9999;
@@ -164,11 +164,8 @@ const styles = `
     font-size: ${WIDGET_CONFIG.menu.fontSize};
     display: flex;
     align-items: center;
-    margin-bottom: ${WIDGET_CONFIG.menu.optionMargin};
     padding: ${WIDGET_CONFIG.menu.optionPadding};
-    width: calc(100% - ${parseInt(WIDGET_CONFIG.menu.optionMargin) * 2}px);
-    margin-left: ${WIDGET_CONFIG.menu.optionMargin};
-    margin-right: ${WIDGET_CONFIG.menu.optionMargin};
+    width: 100%;
     background-color: ${WIDGET_CONFIG.colors.border};
     color: ${WIDGET_CONFIG.colors.text};
     border: none;
@@ -219,7 +216,44 @@ const styles = `
     padding: 10px;
     background: ${WIDGET_CONFIG.colors.primary};
     height: ${WIDGET_CONFIG.menu.headerHeight};
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+  
+  .snn-content {
+    padding: 0 10px 10px 10px;
+  }
+  
+  .snn-reset-button {
+    font-size: ${WIDGET_CONFIG.menu.fontSize};
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: ${WIDGET_CONFIG.menu.optionPadding};
+    width: 100%;
+    background-color: #ff4444;
+    color: ${WIDGET_CONFIG.colors.textLight};
+    border: none;
+    cursor: pointer;
+    border-radius: ${WIDGET_CONFIG.menu.borderRadius};
+    transition: background-color ${WIDGET_CONFIG.animation.transition};
+    line-height: ${WIDGET_CONFIG.typography.lineHeight} !important;
+  }
+  
+  .snn-reset-button:hover {
+    background-color: #cc3333;
+  }
+  
+  .snn-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: ${WIDGET_CONFIG.menu.optionMargin};
+    margin-bottom: 20px;
+  }
+  
+
   .snn-title {
     margin: 0;
     font-size: ${WIDGET_CONFIG.menu.titleFontSize};
@@ -1030,6 +1064,22 @@ function createAccessibilityMenu() {
   header.appendChild(closeButton);
   menu.appendChild(header);
 
+  // Create content wrapper
+  const content = document.createElement('div');
+  content.classList.add('snn-content');
+
+  // Create reset button (outside grid, full width)
+  const resetButton = document.createElement('button');
+  resetButton.innerHTML = `<span class="snn-icon">${icons.resetAll}</span><span class="snn-button-text">Reset All Settings</span>`;
+  resetButton.setAttribute('aria-label', 'Reset All Accessibility Settings');
+  resetButton.classList.add('snn-reset-button');
+  resetButton.addEventListener('click', resetAccessibilitySettings);
+  content.appendChild(resetButton);
+
+  // Create grid wrapper for accessibility options
+  const optionsGrid = document.createElement('div');
+  optionsGrid.classList.add('snn-options-grid');
+
   // Add accessibility options based on configuration
   const options = [
     {
@@ -1135,7 +1185,7 @@ function createAccessibilityMenu() {
     },
   ];
   
-  // Add enabled toggle options
+  // Add enabled toggle options to grid
   options.forEach((option) => {
     if (option.enabled) {
       const button = createToggleButton(
@@ -1147,28 +1197,26 @@ function createAccessibilityMenu() {
         option.icon,
         option.requiresFeature
       );
-      menu.appendChild(button);
+      optionsGrid.appendChild(button);
     }
   });
   
-  // Add action buttons (font selection and color filters) if enabled
+  // Add action buttons (font selection and color filters) to grid if enabled
   if (WIDGET_CONFIG.enableFontSelection) {
     const fontButton = createActionButton('Font Selection', handleFontSelection, icons.fontSelection);
-    menu.appendChild(fontButton);
+    optionsGrid.appendChild(fontButton);
   }
   
   if (WIDGET_CONFIG.enableColorFilter) {
     const colorButton = createActionButton('Color Filter', handleColorFilter, icons.colorFilter);
-    menu.appendChild(colorButton);
+    optionsGrid.appendChild(colorButton);
   }
 
-  // Reset All Button
-  const resetButton = document.createElement('button');
-  resetButton.innerHTML = `<span class="snn-icon">${icons.resetAll}</span><span class="snn-button-text">Reset All</span>`;
-  resetButton.setAttribute('aria-label', 'Reset All Accessibility Settings');
-  resetButton.classList.add('snn-accessibility-option');
-  resetButton.addEventListener('click', resetAccessibilitySettings);
-  menu.appendChild(resetButton);
+  // Add grid to content
+  content.appendChild(optionsGrid);
+  
+  // Add content to menu
+  menu.appendChild(content);
 
   document.body.appendChild(menu);
 }
