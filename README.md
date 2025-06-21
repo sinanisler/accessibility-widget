@@ -26,6 +26,7 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 
 ## Installation
 
+### Method 1: Direct Download
 1. Download the `widget.js` file
 2. Include it in your HTML page:
 
@@ -33,27 +34,64 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 <script src="widget.js"></script>
 ```
 
+### Method 2: NPM
+```bash
+npm install web-accessibility-widget
+```
+
+### Method 3: CDN
+```html
+<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+```
+
 That's it! The widget will automatically initialize when the page loads.
 
 ## Configuration
 
-The widget is highly customizable through the `WIDGET_CONFIG` object at the top of the file. You can:
+The widget is highly customizable. You can override the default settings by defining `window.ACCESSIBILITY_WIDGET_CONFIG` before loading the widget script.
 
-### Enable/Disable Features
-```javascript
-const WIDGET_CONFIG = {
+### Basic Configuration
+```html
+<script>
+// Define your custom configuration
+window.ACCESSIBILITY_WIDGET_CONFIG = {
+  // Enable/disable features
+  enableVoiceControl: false,
+  enableScreenReader: true,
+  
+  // Customize appearance
+  widgetWidth: '350px',
+  colors: {
+    primary: '#0066cc',
+    secondary: '#ffffff'
+  }
+};
+</script>
+<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+```
+
+### Complete Configuration Options
+```html
+<script>
+window.ACCESSIBILITY_WIDGET_CONFIG = {
   // Feature toggles - set to false to disable
   enableHighContrast: true,
   enableBiggerText: true,
+  enableTextSpacing: true,
+  enablePauseAnimations: true,
+  enableHideImages: true,
+  enableDyslexiaFont: true,
+  enableBiggerCursor: true,
+  enableLineHeight: true,
+  enableTextAlign: true,
   enableScreenReader: true,
   enableVoiceControl: true,
-  // ... more features
-};
-```
-
-### Customize Appearance
-```javascript
-const WIDGET_CONFIG = {
+  enableReadingMode: true,
+  enableEnhancedFocus: true,
+  enableReducedMotion: true,
+  enableFontSelection: true,
+  enableColorFilter: true,
+  
   // Widget dimensions and position
   widgetWidth: '440px',
   widgetPosition: {
@@ -67,23 +105,68 @@ const WIDGET_CONFIG = {
     primaryHover: '#00bfff',
     secondary: '#f9f9f9',
     text: '#333',
-    // ... more colors
+    textLight: '#fff',
+    border: '#e6e6e6',
+    borderHover: '#d4d4d4',
+    shadow: 'rgba(0, 0, 0, 0.2)',
+    focus: '#ff6b35',
+    focusGlow: 'rgba(255, 107, 53, 0.3)'
   },
   
   // Button styling
   button: {
     size: '55px',
     borderRadius: '1000px',
-    iconSize: '28px'
+    iconSize: '28px',
+    shadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
+  },
+  
+  // Menu styling
+  menu: {
+    headerHeight: '55px',
+    padding: '0 10px 10px 10px',
+    optionPadding: '14px 10px',
+    optionMargin: '10px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    titleFontSize: '22px',
+    closeButtonSize: '44px'
   },
   
   // Typography
   typography: {
     fontFamily: 'Arial, sans-serif',
     fontSize: '16px',
-    titleFontSize: '22px'
+    titleFontSize: '22px',
+    titleFontWeight: '500',
+    lineHeight: '1'
+  },
+  
+  // Animation
+  animation: {
+    transition: '0.2s',
+    hoverScale: '1.05'
   }
 };
+</script>
+<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+```
+
+### Partial Configuration
+You only need to specify the settings you want to change. The widget will merge your settings with the defaults:
+
+```html
+<script>
+// Only override what you need
+window.ACCESSIBILITY_WIDGET_CONFIG = {
+  enableVoiceControl: false,  // Disable voice control
+  widgetWidth: '300px',       // Smaller width
+  colors: {
+    primary: '#purple'        // Custom color (other colors remain default)
+  }
+};
+</script>
+<script src="widget.js"></script>
 ```
 
 ## Voice Commands
@@ -140,8 +223,8 @@ When voice control is enabled, users can activate features using these commands:
 ### Custom Configuration
 ```html
 <script>
-// Customize before loading
-const WIDGET_CONFIG = {
+// Define custom settings before loading the widget
+window.ACCESSIBILITY_WIDGET_CONFIG = {
   enableVoiceControl: false,  // Disable voice control
   widgetWidth: '300px',       // Smaller menu width
   colors: {
@@ -150,7 +233,7 @@ const WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="widget.js"></script>
+<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
 ```
 
 ## Accessibility Standards

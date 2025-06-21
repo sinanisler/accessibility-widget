@@ -9,8 +9,8 @@
 // CONFIGURATION VARIABLES
 // ===========================================
 
-// Feature toggles - set to false to disable features
-const WIDGET_CONFIG = {
+// Default configuration - can be overridden by user
+const DEFAULT_WIDGET_CONFIG = {
   // Core Features
   enableHighContrast: true,
   enableBiggerText: true,
@@ -87,6 +87,29 @@ const WIDGET_CONFIG = {
     hoverScale: '1.05'
   }
 };
+
+// Function to deep merge user configuration with defaults
+function mergeConfigs(defaultConfig, userConfig) {
+  const result = { ...defaultConfig };
+  
+  if (!userConfig) return result;
+  
+  for (const key in userConfig) {
+    if (userConfig.hasOwnProperty(key)) {
+      if (typeof userConfig[key] === 'object' && userConfig[key] !== null && !Array.isArray(userConfig[key])) {
+        result[key] = mergeConfigs(defaultConfig[key] || {}, userConfig[key]);
+      } else {
+        result[key] = userConfig[key];
+      }
+    }
+  }
+  
+  return result;
+}
+
+// Merge user configuration with defaults
+// Users can define window.ACCESSIBILITY_WIDGET_CONFIG before loading this script
+const WIDGET_CONFIG = mergeConfigs(DEFAULT_WIDGET_CONFIG, window.ACCESSIBILITY_WIDGET_CONFIG || {});
 
 // ===========================================
 // STYLES & VISUAL ASSETS
