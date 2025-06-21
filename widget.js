@@ -6,82 +6,165 @@
 */
 
 // ===========================================
+// CONFIGURATION VARIABLES
+// ===========================================
+
+// Feature toggles - set to false to disable features
+const WIDGET_CONFIG = {
+  // Core Features
+  enableHighContrast: true,
+  enableBiggerText: true,
+  enableTextSpacing: true,
+  enablePauseAnimations: true,
+  enableHideImages: true,
+  enableDyslexiaFont: true,
+  enableBiggerCursor: true,
+  enableLineHeight: true,
+  enableTextAlign: true,
+  
+  // Advanced Features
+  enableScreenReader: true,
+  enableVoiceControl: true,
+  enableReadingMode: true,
+  enableEnhancedFocus: true,
+  enableReducedMotion: true,
+  enableFontSelection: true,
+  enableColorFilter: true,
+  
+  // Widget Styling
+  widgetWidth: '440px',
+  widgetPosition: {
+    right: '20px',
+    bottom: '20px'
+  },
+  
+  // Colors
+  colors: {
+    primary: '#1e90ff',
+    primaryHover: '#00bfff',
+    secondary: '#f9f9f9',
+    text: '#333',
+    textLight: '#fff',
+    border: '#e6e6e6',
+    borderHover: '#d4d4d4',
+    shadow: 'rgba(0, 0, 0, 0.2)',
+    focus: '#ff6b35',
+    focusGlow: 'rgba(255, 107, 53, 0.3)'
+  },
+  
+  // Button styling
+  button: {
+    size: '55px',
+    borderRadius: '1000px',
+    iconSize: '28px',
+    shadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
+  },
+  
+  // Menu styling
+  menu: {
+    headerHeight: '55px',
+    padding: '0 10px 10px 10px',
+    optionPadding: '14px 10px',
+    optionMargin: '10px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    titleFontSize: '22px',
+    closeButtonSize: '44px'
+  },
+  
+  // Typography
+  typography: {
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '16px',
+    titleFontSize: '22px',
+    titleFontWeight: '500',
+    lineHeight: '1'
+  },
+  
+  // Animation
+  animation: {
+    transition: '0.2s',
+    hoverScale: '1.05'
+  }
+};
+
+// ===========================================
 // STYLES & VISUAL ASSETS
 // ===========================================
 
-// Styles for the accessibility widget
+// Generate styles using configuration variables
 const styles = `
   #snn-accessibility-fixed-button {
     position: fixed !important;
-    right: 20px !important;
-    bottom: 20px !important;
+    right: ${WIDGET_CONFIG.widgetPosition.right} !important;
+    bottom: ${WIDGET_CONFIG.widgetPosition.bottom} !important;
     z-index: 9999;
   }
   #snn-accessibility-button {
-    background: linear-gradient(135deg, #1e90ff, #00bfff);
+    background: linear-gradient(135deg, ${WIDGET_CONFIG.colors.primary}, ${WIDGET_CONFIG.colors.primaryHover});
     border: none;
-    border-radius: 1000px;
+    border-radius: ${WIDGET_CONFIG.button.borderRadius};
     cursor: pointer;
-    width: 55px;
-    height: 55px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.2s !important;
+    width: ${WIDGET_CONFIG.button.size};
+    height: ${WIDGET_CONFIG.button.size};
+    box-shadow: ${WIDGET_CONFIG.button.shadow};
+    transition: ${WIDGET_CONFIG.animation.transition} !important;
   }
   #snn-accessibility-button:hover {
-    transform: scale(1.05);
+    transform: scale(${WIDGET_CONFIG.animation.hoverScale});
   }
   #snn-accessibility-button:focus {
-    outline: 2px solid #fff;
+    outline: 2px solid ${WIDGET_CONFIG.colors.textLight};
     outline-offset: 2px;
   }
   #snn-accessibility-button svg {
-    width: 28px;
-    height: 28px;
-    fill: #fff;
+    width: ${WIDGET_CONFIG.button.iconSize};
+    height: ${WIDGET_CONFIG.button.iconSize};
+    fill: ${WIDGET_CONFIG.colors.textLight};
     pointer-events: none;
   }
   #snn-accessibility-menu {
     position: fixed;
     top: 0;
     right: 0;
-    width: 330px;
+    width: ${WIDGET_CONFIG.widgetWidth};
     height: 100vh;
     overflow-y: auto;
-    background-color: #f9f9f9;
-    padding: 0 10px 10px 10px;
+    background-color: ${WIDGET_CONFIG.colors.secondary};
+    padding: ${WIDGET_CONFIG.menu.padding};
     display: none;
-    font-family: Arial, sans-serif;
+    font-family: ${WIDGET_CONFIG.typography.fontFamily};
     z-index: 9999;
     scrollbar-width: thin;
   }
   .snn-accessibility-option {
-    font-size: 16px;
+    font-size: ${WIDGET_CONFIG.menu.fontSize};
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 14px 10px;
-    width: calc(100% - 20px);
-    margin-left:10px;
-    margin-right:10px;
-    background-color: #e6e6e6;
-    color: #333;
+    margin-bottom: ${WIDGET_CONFIG.menu.optionMargin};
+    padding: ${WIDGET_CONFIG.menu.optionPadding};
+    width: calc(100% - ${parseInt(WIDGET_CONFIG.menu.optionMargin) * 2}px);
+    margin-left: ${WIDGET_CONFIG.menu.optionMargin};
+    margin-right: ${WIDGET_CONFIG.menu.optionMargin};
+    background-color: ${WIDGET_CONFIG.colors.border};
+    color: ${WIDGET_CONFIG.colors.text};
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    line-height:1 !important;
+    border-radius: ${WIDGET_CONFIG.menu.borderRadius};
+    transition: background-color ${WIDGET_CONFIG.animation.transition};
+    line-height: ${WIDGET_CONFIG.typography.lineHeight} !important;
   }
   .snn-accessibility-option:hover {
-    background-color: #d4d4d4;
+    background-color: ${WIDGET_CONFIG.colors.borderHover};
   }
   .snn-accessibility-option.active {
-    background-color: #1e90ff;
-    color: #fff;
+    background-color: ${WIDGET_CONFIG.colors.primary};
+    color: ${WIDGET_CONFIG.colors.textLight};
   }
   .snn-icon {
     margin-right: 12px;
-    width: 28px;
-    height: 28px;
+    width: ${WIDGET_CONFIG.button.iconSize};
+    height: ${WIDGET_CONFIG.button.iconSize};
   }
   .snn-icon svg {
     width: 100%;
@@ -91,36 +174,36 @@ const styles = `
   .snn-close {
     background: none;
     border: none;
-    font-size: 44px;
-    color: #fff;
+    font-size: ${WIDGET_CONFIG.menu.closeButtonSize};
+    color: ${WIDGET_CONFIG.colors.textLight};
     cursor: pointer;
     margin-left: auto;
-    line-height:1;
-    border-radius:1000px;
-    width:44px;
-    height:44px;
+    line-height: ${WIDGET_CONFIG.typography.lineHeight};
+    border-radius: ${WIDGET_CONFIG.button.borderRadius};
+    width: ${WIDGET_CONFIG.menu.closeButtonSize};
+    height: ${WIDGET_CONFIG.menu.closeButtonSize};
   }
   .snn-close:focus {
-    outline:solid 2px #fff;
+    outline: solid 2px ${WIDGET_CONFIG.colors.textLight};
   }
   .snn-close:hover {
-    color: #333;
+    color: ${WIDGET_CONFIG.colors.text};
   }
   .snn-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    padding:10px;
-    background:#1e90ff;
-    height:55px;
+    padding: 10px;
+    background: ${WIDGET_CONFIG.colors.primary};
+    height: ${WIDGET_CONFIG.menu.headerHeight};
   }
   .snn-title {
     margin: 0;
-    font-size: 22px;
-    color: #fff;
-    line-height:1 !important;
-    margin-left:5px;
-    font-weight:500;
+    font-size: ${WIDGET_CONFIG.menu.titleFontSize};
+    color: ${WIDGET_CONFIG.colors.textLight};
+    line-height: ${WIDGET_CONFIG.typography.lineHeight} !important;
+    margin-left: 5px;
+    font-weight: ${WIDGET_CONFIG.typography.titleFontWeight};
   }
   /* Accessibility feature styles */
   .snn-high-contrast {
@@ -221,9 +304,9 @@ const styles = `
   
   /* Enhanced Focus */
   .snn-enhanced-focus *:focus {
-    outline: 3px solid #ff6b35 !important;
+    outline: 3px solid ${WIDGET_CONFIG.colors.focus} !important;
     outline-offset: 2px !important;
-    box-shadow: 0 0 0 5px rgba(255, 107, 53, 0.3) !important;
+    box-shadow: 0 0 0 5px ${WIDGET_CONFIG.colors.focusGlow} !important;
   }
   
   /* Reduced Motion */
@@ -924,7 +1007,7 @@ function createAccessibilityMenu() {
   header.appendChild(closeButton);
   menu.appendChild(header);
 
-  // Add accessibility options
+  // Add accessibility options based on configuration
   const options = [
     {
       text: 'Screen Reader',
@@ -932,6 +1015,7 @@ function createAccessibilityMenu() {
       customToggleFunction: screenReader.toggle,
       icon: icons.screenReader,
       requiresFeature: screenReader,
+      enabled: WIDGET_CONFIG.enableScreenReader,
     },
     {
       text: 'Voice Command',
@@ -939,6 +1023,7 @@ function createAccessibilityMenu() {
       customToggleFunction: voiceControl.toggle,
       icon: icons.voiceControl,
       requiresFeature: voiceControl,
+      enabled: WIDGET_CONFIG.enableVoiceControl,
     },
     {
       text: 'High Contrast',
@@ -946,112 +1031,113 @@ function createAccessibilityMenu() {
       className: 'snn-high-contrast',
       icon: icons.highContrast,
       target: document.documentElement,
+      enabled: WIDGET_CONFIG.enableHighContrast,
     },
     {
       text: 'Bigger Text',
       key: 'biggerText',
       className: 'snn-bigger-text',
       icon: icons.biggerText,
+      enabled: WIDGET_CONFIG.enableBiggerText,
     },
     {
       text: 'Text Spacing',
       key: 'textSpacing',
       className: 'snn-text-spacing',
       icon: icons.textSpacing,
+      enabled: WIDGET_CONFIG.enableTextSpacing,
     },
     {
       text: 'Pause Animations',
       key: 'pauseAnimations',
       className: 'snn-pause-animations',
       icon: icons.pauseAnimations,
+      enabled: WIDGET_CONFIG.enablePauseAnimations,
     },
     {
       text: 'Hide Images',
       key: 'hideImages',
       icon: icons.hideImages,
       customToggleFunction: toggleHideImages,
+      enabled: WIDGET_CONFIG.enableHideImages,
     },
     {
       text: 'Dyslexia Friendly',
       key: 'dyslexiaFont',
       className: 'snn-dyslexia-font',
       icon: icons.dyslexiaFont,
+      enabled: WIDGET_CONFIG.enableDyslexiaFont,
     },
     {
       text: 'Bigger Cursor',
       key: 'biggerCursor',
       className: 'snn-bigger-cursor',
       icon: icons.biggerCursor,
+      enabled: WIDGET_CONFIG.enableBiggerCursor,
     },
     {
       text: 'Line Height',
       key: 'lineHeight',
       className: 'snn-line-height',
       icon: icons.lineHeight,
+      enabled: WIDGET_CONFIG.enableLineHeight,
     },
     {
       text: 'Text Align',
       key: 'textAlign',
       className: 'snn-text-align',
       icon: icons.textAlign,
+      enabled: WIDGET_CONFIG.enableTextAlign,
     },
-  ];
-  
-  // Add regular toggle options
-  options.forEach((option) => {
-    const button = createToggleButton(
-      option.text,
-      option.key,
-      option.className,
-      option.target,
-      option.customToggleFunction,
-      option.icon,
-      option.requiresFeature
-    );
-    menu.appendChild(button);
-  });
-  
-  // Add new accessibility features
-  const newFeatures = [
     {
       text: 'Reading Mode',
       key: 'readingMode',
       className: 'snn-reading-mode',
       icon: icons.readingMode,
+      enabled: WIDGET_CONFIG.enableReadingMode,
     },
     {
       text: 'Enhanced Focus',
       key: 'enhancedFocus',
       className: 'snn-enhanced-focus',
       icon: icons.enhancedFocus,
+      enabled: WIDGET_CONFIG.enableEnhancedFocus,
     },
     {
       text: 'Reduced Motion',
       key: 'reducedMotion',
       className: 'snn-reduced-motion',
       icon: icons.reducedMotion,
+      enabled: WIDGET_CONFIG.enableReducedMotion,
     },
   ];
   
-  newFeatures.forEach((feature) => {
-    const button = createToggleButton(
-      feature.text,
-      feature.key,
-      feature.className,
-      feature.target,
-      feature.customToggleFunction,
-      feature.icon,
-      feature.requiresFeature
-    );
-    menu.appendChild(button);
+  // Add enabled toggle options
+  options.forEach((option) => {
+    if (option.enabled) {
+      const button = createToggleButton(
+        option.text,
+        option.key,
+        option.className,
+        option.target,
+        option.customToggleFunction,
+        option.icon,
+        option.requiresFeature
+      );
+      menu.appendChild(button);
+    }
   });
   
-  // Add action buttons (font selection and color filters)
-  const fontButton = createActionButton('Font Selection', handleFontSelection, icons.fontSelection);
-  menu.appendChild(fontButton);
+  // Add action buttons (font selection and color filters) if enabled
+  if (WIDGET_CONFIG.enableFontSelection) {
+    const fontButton = createActionButton('Font Selection', handleFontSelection, icons.fontSelection);
+    menu.appendChild(fontButton);
+  }
   
-  const colorButton = createActionButton('Color Filter', handleColorFilter, icons.colorFilter);
-  menu.appendChild(colorButton);
+  if (WIDGET_CONFIG.enableColorFilter) {
+    const colorButton = createActionButton('Color Filter', handleColorFilter, icons.colorFilter);
+    menu.appendChild(colorButton);
+  }
 
   // Reset All Button
   const resetButton = document.createElement('button');
