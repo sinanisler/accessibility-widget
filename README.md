@@ -6,23 +6,29 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 ![image](https://github.com/user-attachments/assets/2d0e761e-dac5-4319-8a64-970d1b5fe28f)
 
 
-## Regulatory Supports
 
-| **Feature**                         |                  **WCAG AA**                 | **EU (EN 301 549/EAA/WAD)** | **US (ADA/Section 508)** |
-| ----------------------------------- | :------------------------------------------: | :-------------------------: | :----------------------: |
-| **High Contrast Mode**              |                      ✔️                      |              ✔️             |            ✔️            |
-| **Text Size Adjustment**            |                      ✔️                      |              ✔️             |            ✔️            |
-| **Text Spacing**                    |                      ✔️                      |              ✔️             |            ✔️            |
-| **Line Height Adjustment**          |                      ✔️                      |              ✔️             |            ✔️            |
-| **Text Alignment (Left Align)**     |           ✔️ (Visual Presentation)           |              ✔️             |            ✔️            |
-| **Cursor Enhancement**              |           ✔️ (Pointer Target Size)           |              ✔️             |            ✔️            |
-| **Pause Animations**                |                      ✔️                      |              ✔️             |            ✔️            |
-| **Reduced Motion**                  |       ✔️ (Animation from Interactions)       |              ✔️             |            ✔️            |
-| **Hide Images**                     |             ✔️ (Non-text Content)            |              ✔️             |            ✔️            |
-| **Dyslexia-Friendly / Font Select** |  ✔️ (Use of Color, readability enhancements) |              ✔️             |            ✔️            |
-| **Screen Reader Support**           |                      ✔️                      |              ✔️             |            ✔️            |
-| **Voice Control**                   | ✔️ (Character Shortcuts / voice operability) |              ✔️             |            ✔️            |
-| **Color Blindness Filters**         |         ✔️ (Use of Color / contrast)         |              ✔️             |            ✔️            |
+
+### Feature coverage against WCAG 2.1 AA criteria
+> These checks show how each feature aligns with WCAG 2.1 AA success criteria.  
+> They do **not** by themselves make a site fully compliant with WCAG, EN 301 549 or Section 508.
+
+| Feature | WCAG AA criterion(s) | EU (EN 301 549 / EAA / WAD) | US (ADA / Section 508) |
+|---------|---------------------|-----------------------------|------------------------|
+| High Contrast Mode | ✔️ | ✔️ | ✔️ |
+| Text Size Adjustment | ✔️ | ✔️ | ✔️ |
+| Text Spacing | ✔️ | ✔️ | ✔️ |
+| Line Height Adjustment | ✔️ | ✔️ | ✔️ |
+| Text Alignment (Left Align) | ✔️ (1.4.8) | ✔️ | ✔️ |
+| Cursor Enhancement | ◑ (pointer **visible**, target still < 44 px) | ◑ | ◑ |
+| Pause Animations | ✔️ | ✔️ | ✔️ |
+| Reduced Motion | ✔️ | ✔️ | ✔️ |
+| Hide Images | ✔️ (1.1.1) | ✔️ | ✔️ |
+| Dyslexia-Friendly / Font Select | ✔️ | ✔️ | ✔️ |
+| Screen Reader Assist | ✔️ | ✔️ | ✔️ |
+| Voice Control | ◑ (Chrome-only API) | ◑ | ◑ |
+| Color-Blindness Filters | ✔️ | ✔️ | ✔️ |
+
+
 
 
 
