@@ -190,7 +190,7 @@ const styles = `
     padding: 0;
     display: none;
     font-family: ${WIDGET_CONFIG.typography.fontFamily};
-    z-index: 9999;
+    z-index: 999999;
     scrollbar-width: thin;
   }
   .snn-accessibility-option {
