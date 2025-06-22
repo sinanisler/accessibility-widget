@@ -6,7 +6,7 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 https://sinan.im
 
 
-## Basic regulatory Supports
+## Regulatory Supports
 
 | **Feature**                         |                  **WCAG AA**                 | **EU (EN 301 549/EAA/WAD)** | **US (ADA/Section 508)** |
 | ----------------------------------- | :------------------------------------------: | :-------------------------: | :----------------------: |
