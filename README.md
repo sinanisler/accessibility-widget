@@ -3,7 +3,7 @@
 
 A comprehensive, lightweight accessibility tool that enhances web accessibility for all users. This single-file JavaScript widget provides multiple accessibility features to make websites more usable for people with disabilities.
 
-https://sinan.im
+![image](https://github.com/user-attachments/assets/2d0e761e-dac5-4319-8a64-970d1b5fe28f)
 
 
 ## Regulatory Supports
