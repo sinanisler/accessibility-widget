@@ -34,12 +34,12 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 
 ### Method 2: NPM
 ```bash
-npm install web-accessibility-widget
+npm install accessibility-widgets
 ```
 
 ### Method 3: CDN
 ```html
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 That's it! The widget will automatically initialize when the page loads.
@@ -65,7 +65,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ### Complete Configuration Options
@@ -177,7 +177,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ### Partial Configuration
@@ -301,7 +301,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ## Accessibility Standards
