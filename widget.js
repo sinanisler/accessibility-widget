@@ -230,6 +230,7 @@ const styles = `
     font-size: ${WIDGET_CONFIG.menu.fontSize};
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 10px;
     padding: ${WIDGET_CONFIG.menu.optionPadding};
     width: 100%;
@@ -240,6 +241,8 @@ const styles = `
     border-radius: ${WIDGET_CONFIG.menu.borderRadius};
     transition: background-color ${WIDGET_CONFIG.animation.transition};
     line-height: ${WIDGET_CONFIG.typography.lineHeight} !important;
+    font-weight: 500;
+    gap: 8px;
   }
   
   .snn-reset-button:hover {
@@ -263,22 +266,51 @@ const styles = `
     font-weight: ${WIDGET_CONFIG.typography.titleFontWeight};
   }
   /* Accessibility feature styles */
-  .snn-high-contrast {
+  .snn-high-contrast-medium {
+    filter: contrast(1.3) !important;
+  }
+  .snn-high-contrast-medium *{
+    filter: contrast(1.3) !important;
+  }
+  .snn-high-contrast-medium #snn-accessibility-menu{
+    filter: contrast(0.8) !important;
+  }
+  
+  .snn-high-contrast-high {
     background-color: #000 !important;
     color: #fff !important;
     filter: contrast(1.5) !important;
   }
-  .snn-high-contrast body *{
+  .snn-high-contrast-high *{
     background-color: #000 !important;
     color: #fff !important;
     filter: contrast(1.5) !important;
   }
-
-  .snn-high-contrast #snn-accessibility-menu{
+  .snn-high-contrast-high #snn-accessibility-menu{
     filter: contrast(0.7) !important;
   }
-  .snn-bigger-text * {
+  
+  .snn-high-contrast-ultra {
+    background-color: #000 !important;
+    color: #ffff00 !important;
+    filter: contrast(2.0) !important;
+  }
+  .snn-high-contrast-ultra *{
+    background-color: #000 !important;
+    color: #ffff00 !important;
+    filter: contrast(2.0) !important;
+  }
+  .snn-high-contrast-ultra #snn-accessibility-menu{
+    filter: contrast(0.6) !important;
+  }
+  .snn-bigger-text-medium * {
+    font-size: 20px !important;
+  }
+  .snn-bigger-text-large * {
     font-size: 24px !important;
+  }
+  .snn-bigger-text-xlarge * {
+    font-size: 28px !important;
   }
   .snn-text-spacing *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
     letter-spacing: 0.2em !important;
@@ -289,16 +321,28 @@ const styles = `
     transition: none !important;
   }
   .snn-dyslexia-font {
-    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', Brush Script MT, fantasy !important;
+  }
+  .snn-dyslexia-font * {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', Brush Script MT, fantasy !important;
   }
   .snn-line-height *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
     line-height: 2.5 !important;
   }
-  .snn-text-align *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
+  .snn-text-align-left *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
     text-align: left !important;
   }
+  .snn-text-align-center *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
+    text-align: center !important;
+  }
+  .snn-text-align-right *:not(#snn-accessibility-menu *, #snn-accessibility-fixed-button *, #snn-accessibility-button *, .snn-accessibility-option *) {
+    text-align: right !important;
+  }
   .snn-bigger-cursor {
-    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAyNCAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMiAxVjM1TDEwIDI3SDE4TDIgMVoiIGZpbGw9IiMwMDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+'), auto !important;
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA0OCA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCAyVjcwTDIwIDU0SDM2TDQgMloiIGZpbGw9IiMwMDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+'), auto !important;
+  }
+  .snn-bigger-cursor * {
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA0OCA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCAyVjcwTDIwIDU0SDM2TDQgMloiIGZpbGw9IiMwMDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+'), auto !important;
   }
   
   /* Reading Mode */
@@ -395,7 +439,7 @@ const icons = {
   lineHeight: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M16 16h32v4H16zm0 12h32v4H16zm0 12h32v4H16zm0 12h32v4H16zM8 8l8 8-8 8V8zm0 32l8 8-8 8V40z"/></svg>`,
   textAlign: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M10 16h44v4H10zm0 12h44v4H10zm0 12h44v4H10zm0 12h44v4H10z"/></svg>`,
   screenReader: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M16 24 L24 24 L32 16 L32 48 L24 40 L16 40 Z" fill="#333" stroke="#555" stroke-width="2"/><path d="M36 20 C42 24, 42 40, 36 44" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M36 12 C48 24, 48 40, 36 52" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"/><rect x="28" y="48" width="8" height="8" fill="#ccc"/></svg>`,
-  resetAll: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 12a20 20 0 100 40 20 20 0 000-40z" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><polyline points="44,32 32,20 32,32" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><line x1="44" y1="32" x2="48" y2="28" stroke="#333" stroke-width="2" stroke-linecap="round"/><line x1="44" y1="32" x2="48" y2="36" stroke="#333" stroke-width="2" stroke-linecap="round"/><path d="M32 12a20 20 0 0140 0" fill="none" stroke="#333" stroke-width="4" transform="rotate(180 32 32)"/></svg>`,
+  resetAll: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M8 12l4-4 4 4-1.41 1.41L12 10.83l-2.59 2.58z" transform="rotate(45 12 12)"/></svg>`,
   voiceControl: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 44a12 12 0 0012-12V20a12 12 0 10-24 0v12a12 12 0 0012 12z" fill="#333"/><path d="M20 32h24v4H20z" fill="#555"/><path d="M32 48v8" stroke="#555" stroke-width="4" stroke-linecap="round"/></svg>`,
   readingMode: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="4" fill="none" stroke="#333" stroke-width="2"/><path d="M16 20h32v4H16zm0 8h32v4H16zm0 8h24v4H16z"/></svg>`,
   fontSelection: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text x="32" y="40" font-family="serif" font-size="24" text-anchor="middle" fill="#333">Aa</text><path d="M8 48h48v2H8z"/></svg>`,
@@ -524,6 +568,30 @@ function applySettings() {
   const selectedFilter = localStorage.getItem('colorFilter');
   if (selectedFilter) {
     domCache.documentElement.classList.add(`snn-filter-${selectedFilter}`);
+  }
+
+  // Handle text alignment
+  const alignClasses = ['snn-text-align-left', 'snn-text-align-center', 'snn-text-align-right'];
+  domCache.body.classList.remove(...alignClasses);
+  const selectedAlign = localStorage.getItem('textAlign');
+  if (selectedAlign) {
+    domCache.body.classList.add(`snn-text-align-${selectedAlign}`);
+  }
+
+  // Handle bigger text
+  const textClasses = ['snn-bigger-text-medium', 'snn-bigger-text-large', 'snn-bigger-text-xlarge'];
+  domCache.body.classList.remove(...textClasses);
+  const selectedTextSize = localStorage.getItem('biggerText');
+  if (selectedTextSize) {
+    domCache.body.classList.add(`snn-bigger-text-${selectedTextSize}`);
+  }
+
+  // Handle high contrast
+  const contrastClasses = ['snn-high-contrast-medium', 'snn-high-contrast-high', 'snn-high-contrast-ultra'];
+  domCache.documentElement.classList.remove(...contrastClasses);
+  const selectedContrast = localStorage.getItem('highContrast');
+  if (selectedContrast) {
+    domCache.documentElement.classList.add(`snn-high-contrast-${selectedContrast}`);
   }
 
   // Handle images with cached query
@@ -754,6 +822,15 @@ function updateActionButtonStatus(button, buttonText, actionFunction) {
   } else if (buttonText.includes('Color')) {
     const currentFilter = localStorage.getItem('colorFilter');
     statusSpan.textContent = currentFilter ? currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1) : 'None';
+  } else if (buttonText.includes('Text Align')) {
+    const currentAlign = localStorage.getItem('textAlign');
+    statusSpan.textContent = currentAlign ? currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1) : 'Default';
+  } else if (buttonText.includes('Text Size')) {
+    const currentSize = localStorage.getItem('biggerText');
+    statusSpan.textContent = currentSize ? (currentSize === 'xlarge' ? 'X-Large' : currentSize.charAt(0).toUpperCase() + currentSize.slice(1)) : 'Default';
+  } else if (buttonText.includes('High Contrast')) {
+    const currentContrast = localStorage.getItem('highContrast');
+    statusSpan.textContent = currentContrast ? currentContrast.charAt(0).toUpperCase() + currentContrast.slice(1) : 'Default';
   }
 }
 
@@ -812,6 +889,75 @@ function handleColorFilter() {
     localStorage.setItem('colorFilter', selectedFilter);
     domCache.documentElement.classList.add(`snn-filter-${selectedFilter}`);
     return selectedFilter.charAt(0).toUpperCase() + selectedFilter.slice(1);
+  }
+}
+
+// Text align handler with 3 states
+function handleTextAlign() {
+  const alignments = ['left', 'center', 'right'];
+  const currentAlign = localStorage.getItem('textAlign') || 'none';
+  const currentIndex = alignments.indexOf(currentAlign);
+  const nextIndex = (currentIndex + 1) % (alignments.length + 1); // +1 for none
+  
+  // Remove all alignment classes
+  const alignClasses = ['snn-text-align-left', 'snn-text-align-center', 'snn-text-align-right'];
+  domCache.body.classList.remove(...alignClasses);
+  
+  if (nextIndex === alignments.length) {
+    // Default alignment
+    localStorage.removeItem('textAlign');
+    return 'Default';
+  } else {
+    const selectedAlign = alignments[nextIndex];
+    localStorage.setItem('textAlign', selectedAlign);
+    domCache.body.classList.add(`snn-text-align-${selectedAlign}`);
+    return selectedAlign.charAt(0).toUpperCase() + selectedAlign.slice(1);
+  }
+}
+
+// Bigger text handler with 3 states
+function handleBiggerText() {
+  const textSizes = ['medium', 'large', 'xlarge'];
+  const currentSize = localStorage.getItem('biggerText') || 'none';
+  const currentIndex = textSizes.indexOf(currentSize);
+  const nextIndex = (currentIndex + 1) % (textSizes.length + 1); // +1 for none
+  
+  // Remove all text size classes
+  const textClasses = ['snn-bigger-text-medium', 'snn-bigger-text-large', 'snn-bigger-text-xlarge'];
+  domCache.body.classList.remove(...textClasses);
+  
+  if (nextIndex === textSizes.length) {
+    // Default text size
+    localStorage.removeItem('biggerText');
+    return 'Default';
+  } else {
+    const selectedSize = textSizes[nextIndex];
+    localStorage.setItem('biggerText', selectedSize);
+    domCache.body.classList.add(`snn-bigger-text-${selectedSize}`);
+    return selectedSize === 'xlarge' ? 'X-Large' : selectedSize.charAt(0).toUpperCase() + selectedSize.slice(1);
+  }
+}
+
+// High contrast handler with 3 states
+function handleHighContrast() {
+  const contrastLevels = ['medium', 'high', 'ultra'];
+  const currentContrast = localStorage.getItem('highContrast') || 'none';
+  const currentIndex = contrastLevels.indexOf(currentContrast);
+  const nextIndex = (currentIndex + 1) % (contrastLevels.length + 1); // +1 for none
+  
+  // Remove all contrast classes
+  const contrastClasses = ['snn-high-contrast-medium', 'snn-high-contrast-high', 'snn-high-contrast-ultra'];
+  domCache.documentElement.classList.remove(...contrastClasses);
+  
+  if (nextIndex === contrastLevels.length) {
+    // Default contrast
+    localStorage.removeItem('highContrast');
+    return 'Default';
+  } else {
+    const selectedContrast = contrastLevels[nextIndex];
+    localStorage.setItem('highContrast', selectedContrast);
+    domCache.documentElement.classList.add(`snn-high-contrast-${selectedContrast}`);
+    return selectedContrast.charAt(0).toUpperCase() + selectedContrast.slice(1);
   }
 }
 
@@ -1099,21 +1245,6 @@ function createAccessibilityMenu() {
       enabled: WIDGET_CONFIG.enableVoiceControl,
     },
     {
-      text: 'High Contrast',
-      key: 'highContrast',
-      className: 'snn-high-contrast',
-      icon: icons.highContrast,
-      target: document.documentElement,
-      enabled: WIDGET_CONFIG.enableHighContrast,
-    },
-    {
-      text: 'Bigger Text',
-      key: 'biggerText',
-      className: 'snn-bigger-text',
-      icon: icons.biggerText,
-      enabled: WIDGET_CONFIG.enableBiggerText,
-    },
-    {
       text: 'Text Spacing',
       key: 'textSpacing',
       className: 'snn-text-spacing',
@@ -1154,13 +1285,6 @@ function createAccessibilityMenu() {
       className: 'snn-line-height',
       icon: icons.lineHeight,
       enabled: WIDGET_CONFIG.enableLineHeight,
-    },
-    {
-      text: 'Text Align',
-      key: 'textAlign',
-      className: 'snn-text-align',
-      icon: icons.textAlign,
-      enabled: WIDGET_CONFIG.enableTextAlign,
     },
     {
       text: 'Reading Mode',
@@ -1210,6 +1334,21 @@ function createAccessibilityMenu() {
   if (WIDGET_CONFIG.enableColorFilter) {
     const colorButton = createActionButton('Color Filter', handleColorFilter, icons.colorFilter);
     optionsGrid.appendChild(colorButton);
+  }
+  
+  if (WIDGET_CONFIG.enableTextAlign) {
+    const textAlignButton = createActionButton('Text Align', handleTextAlign, icons.textAlign);
+    optionsGrid.appendChild(textAlignButton);
+  }
+  
+  if (WIDGET_CONFIG.enableBiggerText) {
+    const biggerTextButton = createActionButton('Text Size', handleBiggerText, icons.biggerText);
+    optionsGrid.appendChild(biggerTextButton);
+  }
+  
+  if (WIDGET_CONFIG.enableHighContrast) {
+    const highContrastButton = createActionButton('High Contrast', handleHighContrast, icons.highContrast);
+    optionsGrid.appendChild(highContrastButton);
   }
 
   // Add grid to content
