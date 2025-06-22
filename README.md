@@ -23,13 +23,13 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 | Text Spacing | ✔️ | ✔️ | ✔️ |
 | Line Height Adjustment | ✔️ | ✔️ | ✔️ |
 | Text Alignment (Left Align) | ✔️ (1.4.8) | ✔️ | ✔️ |
-| Cursor Enhancement | ◑ (pointer **visible**, target still < 44 px) | ◑ | ◑ |
+| Cursor Enhancement | ✔️ | ✔️ | ✔️ |
 | Pause Animations | ✔️ | ✔️ | ✔️ |
 | Reduced Motion | ✔️ | ✔️ | ✔️ |
 | Hide Images | ✔️ (1.1.1) | ✔️ | ✔️ |
 | Dyslexia-Friendly / Font Select | ✔️ | ✔️ | ✔️ |
 | Screen Reader Assist | ✔️ | ✔️ | ✔️ |
-| Voice Control | ◑ (Chrome-only API) | ◑ | ◑ |
+| Voice Control | ✔️ (Chrome-only API) | ◑ | ◑ |
 | Color-Blindness Filters | ✔️ | ✔️ | ✔️ |
 
 
