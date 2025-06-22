@@ -55,7 +55,7 @@ const DEFAULT_WIDGET_CONFIG = {
   // Button styling
   button: {
     size: '55px',
-    borderRadius: '1000px',
+    borderRadius: '100px',
     iconSize: '40px',
     shadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
   },
@@ -235,6 +235,16 @@ const styles = `
     border-radius: ${WIDGET_CONFIG.button.borderRadius};
     width: ${WIDGET_CONFIG.menu.closeButtonSize};
     height: ${WIDGET_CONFIG.menu.closeButtonSize};
+    position: relative;
+  }
+  .snn-close::before {
+    content: '×';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: ${WIDGET_CONFIG.menu.closeButtonSize};
+    line-height: 1;
   }
   .snn-close:focus {
     outline: solid 2px ${WIDGET_CONFIG.colors.textLight};
@@ -1186,8 +1196,8 @@ function createAccessibilityMenu() {
 
   const closeButton = document.createElement('button');
   closeButton.className = 'snn-close';
-  closeButton.innerHTML = WIDGET_CONFIG.lang.close;
-  closeButton.setAttribute('aria-label', WIDGET_CONFIG.lang.closeAccessibilityMenu);
+  closeButton.innerHTML = '';
+  closeButton.setAttribute('title', WIDGET_CONFIG.lang.closeAccessibilityMenu);
 
   closeButton.addEventListener('click', function () {
     closeMenu();
