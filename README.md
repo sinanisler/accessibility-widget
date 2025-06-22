@@ -11,6 +11,10 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 ### Feature coverage against WCAG 2.1 AA criteria
 > These checks show how each feature aligns with WCAG 2.1 AA success criteria.  
 > They do **not** by themselves make a site fully compliant with WCAG, EN 301 549 or Section 508.
+> To become fully compliant you still need to run a manual checks, fix any underlying HTML/CSS/ARIA issues, test with real users, and re-test every time the site changes.
+
+
+
 
 | Feature | WCAG AA criterion(s) | EU (EN 301 549 / EAA / WAD) | US (ADA / Section 508) |
 |---------|---------------------|-----------------------------|------------------------|
