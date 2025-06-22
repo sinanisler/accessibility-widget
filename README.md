@@ -5,6 +5,28 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 
 https://sinan.im
 
+
+## Basic regulatory Supports
+
+| **Feature**                         |                  **WCAG AA**                 | **EU (EN 301 549/EAA/WAD)** | **US (ADA/Section 508)** |
+| ----------------------------------- | :------------------------------------------: | :-------------------------: | :----------------------: |
+| **High Contrast Mode**              |                      ✔️                      |              ✔️             |            ✔️            |
+| **Text Size Adjustment**            |                      ✔️                      |              ✔️             |            ✔️            |
+| **Text Spacing**                    |                      ✔️                      |              ✔️             |            ✔️            |
+| **Line Height Adjustment**          |                      ✔️                      |              ✔️             |            ✔️            |
+| **Text Alignment (Left Align)**     |           ✔️ (Visual Presentation)           |              ✔️             |            ✔️            |
+| **Cursor Enhancement**              |           ✔️ (Pointer Target Size)           |              ✔️             |            ✔️            |
+| **Pause Animations**                |                      ✔️                      |              ✔️             |            ✔️            |
+| **Reduced Motion**                  |       ✔️ (Animation from Interactions)       |              ✔️             |            ✔️            |
+| **Hide Images**                     |             ✔️ (Non-text Content)            |              ✔️             |            ✔️            |
+| **Dyslexia-Friendly / Font Select** |  ✔️ (Use of Color, readability enhancements) |              ✔️             |            ✔️            |
+| **Screen Reader Support**           |                      ✔️                      |              ✔️             |            ✔️            |
+| **Voice Control**                   | ✔️ (Character Shortcuts / voice operability) |              ✔️             |            ✔️            |
+| **Color Blindness Filters**         |         ✔️ (Use of Color / contrast)         |              ✔️             |            ✔️            |
+
+
+
+
 ## Features
 
 ### Core Accessibility Features
