@@ -25,8 +25,6 @@ const DEFAULT_WIDGET_CONFIG = {
   // Advanced Features
   enableScreenReader: true,
   enableVoiceControl: true,
-  enableReadingMode: true,
-  enableEnhancedFocus: true,
   enableReducedMotion: true,
   enableFontSelection: true,
   enableColorFilter: true,
@@ -66,7 +64,7 @@ const DEFAULT_WIDGET_CONFIG = {
   menu: {
     headerHeight: '55px',
     padding: '0 10px 10px 10px',
-    optionPadding: '14px 10px',
+    optionPadding: '20px 10px',
     optionMargin: '10px',
     borderRadius: '8px',
     fontSize: '16px',
@@ -87,6 +85,36 @@ const DEFAULT_WIDGET_CONFIG = {
   animation: {
     transition: '0.2s',
     hoverScale: '1.05'
+  },
+  
+  // Language/Text Configuration
+  lang: {
+    accessibilityMenu: 'Accessibility Menu',
+    closeAccessibilityMenu: 'Close Accessibility Menu',
+    accessibilityTools: 'Accessibility Tools',
+    resetAllSettings: 'Reset All Settings',
+    screenReader: 'Screen Reader',
+    voiceCommand: 'Voice Command',
+    textSpacing: 'Text Spacing',
+    pauseAnimations: 'Pause Animations',
+    hideImages: 'Hide Images',
+    dyslexiaFriendly: 'Dyslexia Friendly',
+    biggerCursor: 'Bigger Cursor',
+    lineHeight: 'Line Height',
+    reducedMotion: 'Reduced Motion',
+    fontSelection: 'Font Selection',
+    colorFilter: 'Color Filter',
+    textAlign: 'Text Align',
+    textSize: 'Text Size',
+    highContrast: 'High Contrast',
+    defaultFont: 'Default Font',
+    noFilter: 'No Filter',
+    default: 'Default',
+    screenReaderOn: 'Screen reader on',
+    screenReaderOff: 'Screen reader off',
+    voiceControlActivated: 'Voice control activated',
+    notSupportedBrowser: 'is not supported in this browser',
+    close: 'Close'
   }
 };
 
@@ -239,7 +267,7 @@ const styles = `
     margin-bottom: 10px;
     padding: ${WIDGET_CONFIG.menu.optionPadding};
     width: 100%;
-    background-color: #ff4444;
+    background-color: #343434;
     color: ${WIDGET_CONFIG.colors.textLight};
     border: none;
     cursor: pointer;
@@ -350,30 +378,6 @@ const styles = `
     cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA0OCA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCAyVjcwTDIwIDU0SDM2TDQgMloiIGZpbGw9IiMwMDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+'), auto !important;
   }
   
-  /* Reading Mode */
-  .snn-reading-mode {
-    background: #f9f9f9 !important;
-    color: #333 !important;
-    line-height: 1.6 !important;
-    font-family: Georgia, serif !important;
-  }
-  .snn-reading-mode * {
-    background: transparent !important;
-    color: inherit !important;
-    font-family: inherit !important;
-    line-height: inherit !important;
-  }
-  .snn-reading-mode h1, .snn-reading-mode h2, .snn-reading-mode h3, 
-  .snn-reading-mode h4, .snn-reading-mode h5, .snn-reading-mode h6 {
-    color: #222 !important;
-    font-weight: bold !important;
-  }
-  .snn-reading-mode img, .snn-reading-mode video, .snn-reading-mode iframe,
-  .snn-reading-mode aside, .snn-reading-mode nav, .snn-reading-mode footer,
-  .snn-reading-mode header, .snn-reading-mode .sidebar, .snn-reading-mode .menu {
-    display: none !important;
-  }
-  
   /* Font Selection */
   .snn-font-arial {
     font-family: Arial, sans-serif !important;
@@ -408,13 +412,6 @@ const styles = `
     filter: grayscale(100%) !important;
   }
   
-  /* Enhanced Focus */
-  .snn-enhanced-focus *:focus {
-    outline: 3px solid ${WIDGET_CONFIG.colors.focus} !important;
-    outline-offset: 2px !important;
-    box-shadow: 0 0 0 5px ${WIDGET_CONFIG.colors.focusGlow} !important;
-  }
-  
   /* Reduced Motion */
   .snn-reduced-motion * {
     animation: none !important;
@@ -433,7 +430,7 @@ const styles = `
 
 // SVG icons
 const icons = {
-  buttonsvg: `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="" height="" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2713 2713" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[.fil1 {fill:#118ED6} .fil0 {fill:white}]]></style></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"/><g id="_275060008"><circle class="fil0" cx="1356" cy="1356" r="1356"/><path class="fil1" d="M1305 315c-143,32 -237,147 -205,319 25,141 143,240 312,213 131,-21 237,-160 206,-324 -23,-125 -156,-243 -313,-208zm-150 1699l0 -340c1,-75 5,-367 1,-417 -9,-113 -93,-177 -174,-250 -19,-17 -33,-31 -53,-50 -19,-18 -35,-30 -54,-49 -19,-18 -34,-29 -53,-50 -38,-40 -162,-118 -98,-188 60,-65 124,34 188,86l111 99c11,10 17,13 27,25 9,12 16,18 28,28 35,30 72,64 125,85 122,50 214,44 334,-14 71,-34 103,-68 150,-113 9,-9 17,-15 27,-24 20,-18 39,-34 56,-51l108 -103c19,-18 29,-36 65,-39 33,-3 58,10 67,36 11,30 3,63 -13,83l-273 254c-40,31 -76,64 -109,98 -38,41 -54,80 -55,153 -3,243 -1,489 0,733 0,3 0,5 0,8 0,0 0,0 0,0 0,184 149,333 333,333 61,0 118,-17 167,-45 24,-18 48,-36 67,-51 39,-32 140,-145 171,-186 11,-16 19,-26 30,-42 104,-151 178,-317 209,-505 39,-242 -12,-506 -119,-712 -36,-69 -69,-123 -108,-178 -12,-15 -20,-24 -32,-39 -28,-36 -67,-84 -99,-115 -69,-66 -76,-68 -158,-129 -53,-39 -113,-70 -182,-103 -140,-67 -297,-100 -472,-102 -180,-2 -322,37 -472,97 -55,22 -93,42 -143,72 -55,33 -73,43 -127,87 -47,38 -70,60 -111,104 -6,6 -12,10 -18,17 -7,7 -9,13 -16,20 -8,9 -10,8 -17,18 -80,101 -91,116 -158,235 -64,113 -121,286 -136,435 -18,190 1,329 58,498 46,134 132,283 204,367 13,15 21,26 32,40 34,43 103,105 146,139 7,6 14,11 22,17 54,38 120,61 192,61 183,0 332,-149 332,-333l0 0z"/></g></g></svg>`,
+  buttonsvg: `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="" height="" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2713 2713" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[.fil1 {fill:${WIDGET_CONFIG.colors.primary}} .fil0 {fill:white}]]></style></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"/><g id="_275060008"><circle class="fil0" cx="1356" cy="1356" r="1356"/><path class="fil1" d="M1305 315c-143,32 -237,147 -205,319 25,141 143,240 312,213 131,-21 237,-160 206,-324 -23,-125 -156,-243 -313,-208zm-150 1699l0 -340c1,-75 5,-367 1,-417 -9,-113 -93,-177 -174,-250 -19,-17 -33,-31 -53,-50 -19,-18 -35,-30 -54,-49 -19,-18 -34,-29 -53,-50 -38,-40 -162,-118 -98,-188 60,-65 124,34 188,86l111 99c11,10 17,13 27,25 9,12 16,18 28,28 35,30 72,64 125,85 122,50 214,44 334,-14 71,-34 103,-68 150,-113 9,-9 17,-15 27,-24 20,-18 39,-34 56,-51l108 -103c19,-18 29,-36 65,-39 33,-3 58,10 67,36 11,30 3,63 -13,83l-273 254c-40,31 -76,64 -109,98 -38,41 -54,80 -55,153 -3,243 -1,489 0,733 0,3 0,5 0,8 0,0 0,0 0,0 0,184 149,333 333,333 61,0 118,-17 167,-45 24,-18 48,-36 67,-51 39,-32 140,-145 171,-186 11,-16 19,-26 30,-42 104,-151 178,-317 209,-505 39,-242 -12,-506 -119,-712 -36,-69 -69,-123 -108,-178 -12,-15 -20,-24 -32,-39 -28,-36 -67,-84 -99,-115 -69,-66 -76,-68 -158,-129 -53,-39 -113,-70 -182,-103 -140,-67 -297,-100 -472,-102 -180,-2 -322,37 -472,97 -55,22 -93,42 -143,72 -55,33 -73,43 -127,87 -47,38 -70,60 -111,104 -6,6 -12,10 -18,17 -7,7 -9,13 -16,20 -8,9 -10,8 -17,18 -80,101 -91,116 -158,235 -64,113 -121,286 -136,435 -18,190 1,329 58,498 46,134 132,283 204,367 13,15 21,26 32,40 34,43 103,105 146,139 7,6 14,11 22,17 54,38 120,61 192,61 183,0 332,-149 332,-333l0 0z"/></g></g></svg>`,
   highContrast: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#000"/><path d="M32 2a30 30 0 000 60V2z" fill="#fff"/></svg>`,
   biggerText: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 8L8 56h12l6-12h24l6 12h12L32 8zm-6 36L32 20l6 24H26z"/></svg>`,
   textSpacing: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M10 16h44v4H10zm0 12h44v4H10zm0 12h44v4H10zm0 12h44v4H10z"/></svg>`,
@@ -446,10 +443,8 @@ const icons = {
   screenReader: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M16 24 L24 24 L32 16 L32 48 L24 40 L16 40 Z" fill="#333" stroke="#555" stroke-width="2"/><path d="M36 20 C42 24, 42 40, 36 44" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M36 12 C48 24, 48 40, 36 52" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"/><rect x="28" y="48" width="8" height="8" fill="#ccc"/></svg>`,
   resetAll: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M8 12l4-4 4 4-1.41 1.41L12 10.83l-2.59 2.58z" transform="rotate(45 12 12)"/></svg>`,
   voiceControl: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 44a12 12 0 0012-12V20a12 12 0 10-24 0v12a12 12 0 0012 12z" fill="#333"/><path d="M20 32h24v4H20z" fill="#555"/><path d="M32 48v8" stroke="#555" stroke-width="4" stroke-linecap="round"/></svg>`,
-  readingMode: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="4" fill="none" stroke="#333" stroke-width="2"/><path d="M16 20h32v4H16zm0 8h32v4H16zm0 8h24v4H16z"/></svg>`,
   fontSelection: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text x="32" y="40" font-family="serif" font-size="24" text-anchor="middle" fill="#333">Aa</text><path d="M8 48h48v2H8z"/></svg>`,
   colorFilter: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="none" stroke="#333" stroke-width="2"/><path d="M32 8a24 24 0 000 48V8z" fill="#f00" opacity="0.3"/><path d="M32 8a24 24 0 000 48" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="4,2"/></svg>`,
-  enhancedFocus: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="4" fill="none" stroke="#ff6b35" stroke-width="3"/><path d="M8 8l8 8M56 8l-8 8M8 56l8-8M56 56l-8-8" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/></svg>`,
   reducedMotion: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="16" y="24" width="8" height="16" fill="#333"/><rect x="28" y="24" width="8" height="16" fill="#333"/><rect x="40" y="24" width="8" height="16" fill="#333"/></svg>`,
 };
 
@@ -515,8 +510,6 @@ function applySettings() {
     { key: 'textAlign', className: 'snn-text-align' },
     { key: 'pauseAnimations', className: 'snn-pause-animations' },
     { key: 'textSpacing', className: 'snn-text-spacing' },
-    { key: 'readingMode', className: 'snn-reading-mode' },
-    { key: 'enhancedFocus', className: 'snn-enhanced-focus' },
     { key: 'reducedMotion', className: 'snn-reduced-motion' },
   ];
 
@@ -627,7 +620,7 @@ function createAccessibilityButton() {
   const button = document.createElement('button');
   button.id = 'snn-accessibility-button';
   button.innerHTML = icons.buttonsvg;
-  button.setAttribute('aria-label', 'Accessibility Menu');
+  button.setAttribute('aria-label', WIDGET_CONFIG.lang.accessibilityMenu);
 
   button.addEventListener('click', function () {
     toggleMenu();
@@ -658,8 +651,6 @@ function resetAccessibilitySettings() {
     'textSpacing',
     'highContrast',
     'voiceControl',
-    'readingMode',
-    'enhancedFocus',
     'reducedMotion',
     'fontSelection',
     'colorFilter',
@@ -675,8 +666,6 @@ function resetAccessibilitySettings() {
     'snn-text-spacing',
     'snn-line-height',
     'snn-text-align',
-    'snn-reading-mode',
-    'snn-enhanced-focus',
     'snn-reduced-motion',
     'snn-font-arial',
     'snn-font-times',
@@ -731,7 +720,7 @@ function createToggleButton(
   // Check if feature is supported
   if (requiresFeature && !requiresFeature.isSupported) {
     button.disabled = true;
-    button.setAttribute('title', `${buttonText} is not supported in this browser`);
+    button.setAttribute('title', `${buttonText} ${WIDGET_CONFIG.lang.notSupportedBrowser}`);
     button.style.opacity = '0.5';
     return button;
   }
@@ -788,7 +777,7 @@ function createToggleButton(
 // Create special action buttons (for cycling through options)
 function createActionButton(buttonText, actionFunction, iconSVG) {
   const button = document.createElement('button');
-  button.innerHTML = `<span class="snn-icon">${iconSVG}</span><span class="snn-button-text">${buttonText}: <span class="snn-status">Default</span></span>`;
+  button.innerHTML = `<span class="snn-icon">${iconSVG}</span><span class="snn-button-text">${buttonText}: <span class="snn-status">${WIDGET_CONFIG.lang.default}</span></span>`;
   button.setAttribute('aria-label', buttonText);
   button.classList.add('snn-accessibility-option');
   
@@ -823,19 +812,19 @@ function updateActionButtonStatus(button, buttonText, actionFunction) {
   
   if (buttonText.includes('Font')) {
     const currentFont = localStorage.getItem('fontSelection');
-    statusSpan.textContent = currentFont ? currentFont.charAt(0).toUpperCase() + currentFont.slice(1) : 'Default';
+    statusSpan.textContent = currentFont ? currentFont.charAt(0).toUpperCase() + currentFont.slice(1) : WIDGET_CONFIG.lang.default;
   } else if (buttonText.includes('Color')) {
     const currentFilter = localStorage.getItem('colorFilter');
-    statusSpan.textContent = currentFilter ? currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1) : 'None';
+    statusSpan.textContent = currentFilter ? currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1) : WIDGET_CONFIG.lang.noFilter;
   } else if (buttonText.includes('Text Align')) {
     const currentAlign = localStorage.getItem('textAlign');
-    statusSpan.textContent = currentAlign ? currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1) : 'Default';
+    statusSpan.textContent = currentAlign ? currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1) : WIDGET_CONFIG.lang.default;
   } else if (buttonText.includes('Text Size')) {
     const currentSize = localStorage.getItem('biggerText');
-    statusSpan.textContent = currentSize ? (currentSize === 'xlarge' ? 'X-Large' : currentSize.charAt(0).toUpperCase() + currentSize.slice(1)) : 'Default';
+    statusSpan.textContent = currentSize ? (currentSize === 'xlarge' ? 'X-Large' : currentSize.charAt(0).toUpperCase() + currentSize.slice(1)) : WIDGET_CONFIG.lang.default;
   } else if (buttonText.includes('High Contrast')) {
     const currentContrast = localStorage.getItem('highContrast');
-    statusSpan.textContent = currentContrast ? currentContrast.charAt(0).toUpperCase() + currentContrast.slice(1) : 'Default';
+    statusSpan.textContent = currentContrast ? currentContrast.charAt(0).toUpperCase() + currentContrast.slice(1) : WIDGET_CONFIG.lang.default;
   }
 }
 
@@ -865,7 +854,7 @@ function handleFontSelection() {
   if (nextIndex === fonts.length) {
     // Default font
     localStorage.removeItem('fontSelection');
-    return 'Default Font';
+    return WIDGET_CONFIG.lang.defaultFont;
   } else {
     const selectedFont = fonts[nextIndex];
     localStorage.setItem('fontSelection', selectedFont);
@@ -888,7 +877,7 @@ function handleColorFilter() {
   if (nextIndex === filters.length) {
     // No filter
     localStorage.removeItem('colorFilter');
-    return 'No Filter';
+    return WIDGET_CONFIG.lang.noFilter;
   } else {
     const selectedFilter = filters[nextIndex];
     localStorage.setItem('colorFilter', selectedFilter);
@@ -911,7 +900,7 @@ function handleTextAlign() {
   if (nextIndex === alignments.length) {
     // Default alignment
     localStorage.removeItem('textAlign');
-    return 'Default';
+    return WIDGET_CONFIG.lang.default;
   } else {
     const selectedAlign = alignments[nextIndex];
     localStorage.setItem('textAlign', selectedAlign);
@@ -934,7 +923,7 @@ function handleBiggerText() {
   if (nextIndex === textSizes.length) {
     // Default text size
     localStorage.removeItem('biggerText');
-    return 'Default';
+    return WIDGET_CONFIG.lang.default;
   } else {
     const selectedSize = textSizes[nextIndex];
     localStorage.setItem('biggerText', selectedSize);
@@ -957,7 +946,7 @@ function handleHighContrast() {
   if (nextIndex === contrastLevels.length) {
     // Default contrast
     localStorage.removeItem('highContrast');
-    return 'Default';
+    return WIDGET_CONFIG.lang.default;
   } else {
     const selectedContrast = contrastLevels[nextIndex];
     localStorage.setItem('highContrast', selectedContrast);
@@ -994,7 +983,7 @@ const screenReader = {
   },
   toggle: function (isActive) {
     if (!screenReader.isSupported) {
-      console.warn('Speech synthesis is not supported in this browser.');
+      console.warn(`Speech synthesis ${WIDGET_CONFIG.lang.notSupportedBrowser}`);
       return false;
     }
     
@@ -1004,7 +993,7 @@ const screenReader = {
     try {
       if (isActive) {
         document.addEventListener('focusin', screenReader.handleFocus);
-        const feedbackSpeech = new SpeechSynthesisUtterance('Screen reader on');
+        const feedbackSpeech = new SpeechSynthesisUtterance(WIDGET_CONFIG.lang.screenReaderOn);
         feedbackSpeech.lang = 'en-US';
         feedbackSpeech.onerror = function(event) {
           console.warn('Speech synthesis feedback error:', event.error);
@@ -1013,7 +1002,7 @@ const screenReader = {
       } else {
         document.removeEventListener('focusin', screenReader.handleFocus);
         window.speechSynthesis.cancel();
-        const feedbackSpeech = new SpeechSynthesisUtterance('Screen reader off');
+        const feedbackSpeech = new SpeechSynthesisUtterance(WIDGET_CONFIG.lang.screenReaderOff);
         feedbackSpeech.lang = 'en-US';
         feedbackSpeech.onerror = function(event) {
           console.warn('Speech synthesis feedback error:', event.error);
@@ -1038,7 +1027,7 @@ const voiceControl = {
   maxRetries: 3,
   toggle: function (isActive) {
     if (!voiceControl.isSupported) {
-      console.warn('Speech Recognition API is not supported in this browser.');
+      console.warn(`Speech Recognition API ${WIDGET_CONFIG.lang.notSupportedBrowser}`);
       return false;
     }
     
@@ -1075,7 +1064,7 @@ const voiceControl = {
       voiceControl.recognition.continuous = false;
 
       voiceControl.recognition.onstart = function () {
-        console.log('Voice control activated');
+        console.log(WIDGET_CONFIG.lang.voiceControlActivated);
         voiceControl.retryCount = 0;
       };
 
@@ -1193,12 +1182,12 @@ function createAccessibilityMenu() {
   const title = document.createElement('h2');
   title.classList.add('snn-title');
   title.id = 'snn-accessibility-title';
-  title.textContent = 'Accessibility Tools';
+  title.textContent = WIDGET_CONFIG.lang.accessibilityTools;
 
   const closeButton = document.createElement('button');
   closeButton.className = 'snn-close';
-  closeButton.innerHTML = '&times;';
-  closeButton.setAttribute('aria-label', 'Close Accessibility Menu');
+  closeButton.innerHTML = WIDGET_CONFIG.lang.close;
+  closeButton.setAttribute('aria-label', WIDGET_CONFIG.lang.closeAccessibilityMenu);
 
   closeButton.addEventListener('click', function () {
     closeMenu();
@@ -1221,8 +1210,8 @@ function createAccessibilityMenu() {
 
   // Create reset button (outside grid, full width)
   const resetButton = document.createElement('button');
-  resetButton.innerHTML = `<span class="snn-icon">${icons.resetAll}</span><span class="snn-button-text">Reset All Settings</span>`;
-  resetButton.setAttribute('aria-label', 'Reset All Accessibility Settings');
+  resetButton.innerHTML = `<span class="snn-icon">${icons.resetAll}</span><span class="snn-button-text">${WIDGET_CONFIG.lang.resetAllSettings}</span>`;
+  resetButton.setAttribute('aria-label', WIDGET_CONFIG.lang.resetAllSettings);
   resetButton.classList.add('snn-reset-button');
   resetButton.addEventListener('click', resetAccessibilitySettings);
   content.appendChild(resetButton);
@@ -1234,7 +1223,7 @@ function createAccessibilityMenu() {
   // Add accessibility options based on configuration
   const options = [
     {
-      text: 'Screen Reader',
+      text: WIDGET_CONFIG.lang.screenReader,
       key: 'screenReader',
       customToggleFunction: screenReader.toggle,
       icon: icons.screenReader,
@@ -1242,7 +1231,7 @@ function createAccessibilityMenu() {
       enabled: WIDGET_CONFIG.enableScreenReader,
     },
     {
-      text: 'Voice Command',
+      text: WIDGET_CONFIG.lang.voiceCommand,
       key: 'voiceControl',
       customToggleFunction: voiceControl.toggle,
       icon: icons.voiceControl,
@@ -1250,63 +1239,49 @@ function createAccessibilityMenu() {
       enabled: WIDGET_CONFIG.enableVoiceControl,
     },
     {
-      text: 'Text Spacing',
+      text: WIDGET_CONFIG.lang.textSpacing,
       key: 'textSpacing',
       className: 'snn-text-spacing',
       icon: icons.textSpacing,
       enabled: WIDGET_CONFIG.enableTextSpacing,
     },
     {
-      text: 'Pause Animations',
+      text: WIDGET_CONFIG.lang.pauseAnimations,
       key: 'pauseAnimations',
       className: 'snn-pause-animations',
       icon: icons.pauseAnimations,
       enabled: WIDGET_CONFIG.enablePauseAnimations,
     },
     {
-      text: 'Hide Images',
+      text: WIDGET_CONFIG.lang.hideImages,
       key: 'hideImages',
       icon: icons.hideImages,
       customToggleFunction: toggleHideImages,
       enabled: WIDGET_CONFIG.enableHideImages,
     },
     {
-      text: 'Dyslexia Friendly',
+      text: WIDGET_CONFIG.lang.dyslexiaFriendly,
       key: 'dyslexiaFont',
       className: 'snn-dyslexia-font',
       icon: icons.dyslexiaFont,
       enabled: WIDGET_CONFIG.enableDyslexiaFont,
     },
     {
-      text: 'Bigger Cursor',
+      text: WIDGET_CONFIG.lang.biggerCursor,
       key: 'biggerCursor',
       className: 'snn-bigger-cursor',
       icon: icons.biggerCursor,
       enabled: WIDGET_CONFIG.enableBiggerCursor,
     },
     {
-      text: 'Line Height',
+      text: WIDGET_CONFIG.lang.lineHeight,
       key: 'lineHeight',
       className: 'snn-line-height',
       icon: icons.lineHeight,
       enabled: WIDGET_CONFIG.enableLineHeight,
     },
     {
-      text: 'Reading Mode',
-      key: 'readingMode',
-      className: 'snn-reading-mode',
-      icon: icons.readingMode,
-      enabled: WIDGET_CONFIG.enableReadingMode,
-    },
-    {
-      text: 'Enhanced Focus',
-      key: 'enhancedFocus',
-      className: 'snn-enhanced-focus',
-      icon: icons.enhancedFocus,
-      enabled: WIDGET_CONFIG.enableEnhancedFocus,
-    },
-    {
-      text: 'Reduced Motion',
+      text: WIDGET_CONFIG.lang.reducedMotion,
       key: 'reducedMotion',
       className: 'snn-reduced-motion',
       icon: icons.reducedMotion,
@@ -1332,27 +1307,27 @@ function createAccessibilityMenu() {
   
   // Add action buttons (font selection and color filters) to grid if enabled
   if (WIDGET_CONFIG.enableFontSelection) {
-    const fontButton = createActionButton('Font Selection', handleFontSelection, icons.fontSelection);
+    const fontButton = createActionButton(WIDGET_CONFIG.lang.fontSelection, handleFontSelection, icons.fontSelection);
     optionsGrid.appendChild(fontButton);
   }
   
   if (WIDGET_CONFIG.enableColorFilter) {
-    const colorButton = createActionButton('Color Filter', handleColorFilter, icons.colorFilter);
+    const colorButton = createActionButton(WIDGET_CONFIG.lang.colorFilter, handleColorFilter, icons.colorFilter);
     optionsGrid.appendChild(colorButton);
   }
   
   if (WIDGET_CONFIG.enableTextAlign) {
-    const textAlignButton = createActionButton('Text Align', handleTextAlign, icons.textAlign);
+    const textAlignButton = createActionButton(WIDGET_CONFIG.lang.textAlign, handleTextAlign, icons.textAlign);
     optionsGrid.appendChild(textAlignButton);
   }
   
   if (WIDGET_CONFIG.enableBiggerText) {
-    const biggerTextButton = createActionButton('Text Size', handleBiggerText, icons.biggerText);
+    const biggerTextButton = createActionButton(WIDGET_CONFIG.lang.textSize, handleBiggerText, icons.biggerText);
     optionsGrid.appendChild(biggerTextButton);
   }
   
   if (WIDGET_CONFIG.enableHighContrast) {
-    const highContrastButton = createActionButton('High Contrast', handleHighContrast, icons.highContrast);
+    const highContrastButton = createActionButton(WIDGET_CONFIG.lang.highContrast, handleHighContrast, icons.highContrast);
     optionsGrid.appendChild(highContrastButton);
   }
 

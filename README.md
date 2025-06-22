@@ -18,8 +18,6 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 ### Advanced Features
 - **Screen Reader Support** - Built-in text-to-speech functionality
 - **Voice Control** - Voice commands to control accessibility features
-- **Reading Mode** - Simplified, distraction-free reading experience
-- **Enhanced Focus Indicators** - Improved visual focus indicators for keyboard navigation
 - **Reduced Motion** - Respects user preferences for reduced motion
 - **Font Selection** - Choose between Arial, Times New Roman, and Verdana
 - **Color Blindness Filters** - Filters for Protanopia, Deuteranopia, Tritanopia, and Grayscale
@@ -86,8 +84,6 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   enableTextAlign: true,
   enableScreenReader: true,
   enableVoiceControl: true,
-  enableReadingMode: true,
-  enableEnhancedFocus: true,
   enableReducedMotion: true,
   enableFontSelection: true,
   enableColorFilter: true,
@@ -95,8 +91,10 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   // Widget dimensions and position
   widgetWidth: '440px',
   widgetPosition: {
-    right: '20px',
-    bottom: '20px'
+    side: 'right',     // 'left' or 'right' - which side to position widget
+    right: '20px',     // distance from right edge when side is 'right'
+    left: '20px',      // distance from left edge when side is 'left'
+    bottom: '20px'     // distance from bottom
   },
   
   // Color scheme
@@ -146,6 +144,36 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   animation: {
     transition: '0.2s',
     hoverScale: '1.05'
+  },
+  
+  // Language/Text Configuration - Customize all text strings
+  lang: {
+    accessibilityMenu: 'Accessibility Menu',
+    closeAccessibilityMenu: 'Close Accessibility Menu',
+    accessibilityTools: 'Accessibility Tools',
+    resetAllSettings: 'Reset All Settings',
+    screenReader: 'Screen Reader',
+    voiceCommand: 'Voice Command',
+    textSpacing: 'Text Spacing',
+    pauseAnimations: 'Pause Animations',
+    hideImages: 'Hide Images',
+    dyslexiaFriendly: 'Dyslexia Friendly',
+    biggerCursor: 'Bigger Cursor',
+    lineHeight: 'Line Height',
+    reducedMotion: 'Reduced Motion',
+    fontSelection: 'Font Selection',
+    colorFilter: 'Color Filter',
+    textAlign: 'Text Align',
+    textSize: 'Text Size',
+    highContrast: 'High Contrast',
+    defaultFont: 'Default Font',
+    noFilter: 'No Filter',
+    default: 'Default',
+    close: 'Close',
+    screenReaderOn: 'Screen reader on',
+    screenReaderOff: 'Screen reader off',
+    voiceControlActivated: 'Voice control activated',
+    notSupportedBrowser: 'is not supported in this browser'
   }
 };
 </script>
@@ -167,6 +195,42 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
 };
 </script>
 <script src="widget.js"></script>
+```
+
+### Widget Positioning
+The widget can be positioned on either side of the screen:
+
+```html
+<script>
+window.ACCESSIBILITY_WIDGET_CONFIG = {
+  widgetPosition: {
+    side: 'left',          // Position on left side of screen
+    left: '20px',          // 20px from left edge
+    bottom: '20px'         // 20px from bottom
+  }
+};
+</script>
+```
+
+### Internationalization (i18n)
+The widget supports full internationalization. You can customize all text strings:
+
+```html
+<script>
+// Spanish language example
+window.ACCESSIBILITY_WIDGET_CONFIG = {
+  lang: {
+    accessibilityMenu: 'Menú de Accesibilidad',
+    accessibilityTools: 'Herramientas de Accesibilidad',
+    screenReader: 'Lector de Pantalla',
+    biggerText: 'Texto Más Grande',
+    highContrast: 'Alto Contraste',
+    resetAllSettings: 'Restablecer Todas las Configuraciones',
+    close: 'Cerrar'
+    // ... add more translations as needed
+  }
+};
+</script>
 ```
 
 ## Voice Commands
@@ -200,6 +264,10 @@ When voice control is enabled, users can activate features using these commands:
 - **Performance Optimized** - DOM caching and efficient event handling
 - **Error Handling** - Robust error handling for browser compatibility
 - **Responsive Design** - Works on desktop and mobile devices
+- **Flexible Positioning** - Support for left/right side positioning
+- **Full Internationalization** - Complete text customization for any language
+- **Configurable Colors** - Dynamic color theming including SVG icon colors
+- **Screen Reader Optimized** - Proper text labels for all interactive elements
 
 ## Usage Examples
 
@@ -269,3 +337,14 @@ This project is open source and available under the GPL License.
 ## Support
 
 For support or feature requests, please check the browser console for any error messages and ensure your browser supports the required APIs for advanced features like speech synthesis and recognition.
+
+## Recent Changes
+
+### Latest Updates
+- **Widget Positioning**: Added support for left/right side positioning with configurable distances
+- **Internationalization**: Full i18n support with customizable text strings for all languages
+- **Color Theming**: SVG icons now use configurable primary color instead of hardcoded values
+- **Screen Reader Improvements**: Fixed close button text to read properly ("Close" instead of "times")
+- **Removed Features**: Removed Reading Mode and Enhanced Focus features for better performance
+- **UI Improvements**: Updated header background to black, removed gradient from accessibility button
+- **Configuration**: Enhanced configuration system with deep merging for partial overrides
