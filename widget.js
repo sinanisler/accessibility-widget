@@ -132,6 +132,9 @@ const styles = `
     height: ${WIDGET_CONFIG.button.size};
     box-shadow: ${WIDGET_CONFIG.button.shadow};
     transition: ${WIDGET_CONFIG.animation.transition} !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #snn-accessibility-button:hover {
     transform: scale(${WIDGET_CONFIG.animation.hoverScale});
