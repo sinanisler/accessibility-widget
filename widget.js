@@ -34,13 +34,15 @@ const DEFAULT_WIDGET_CONFIG = {
   // Widget Styling
   widgetWidth: '440px',
   widgetPosition: {
+    side: 'right', // 'left' or 'right'
     right: '20px',
+    left: '20px',
     bottom: '20px'
   },
   
   // Colors
   colors: {
-    primary: '#1e90ff',
+    primary: '#000000',
     primaryHover: '#00bfff',
     secondary: '#f9f9f9',
     text: '#333',
@@ -119,12 +121,12 @@ const WIDGET_CONFIG = mergeConfigs(DEFAULT_WIDGET_CONFIG, window.ACCESSIBILITY_W
 const styles = `
   #snn-accessibility-fixed-button {
     position: fixed !important;
-    right: ${WIDGET_CONFIG.widgetPosition.right} !important;
+    ${WIDGET_CONFIG.widgetPosition.side}: ${WIDGET_CONFIG.widgetPosition[WIDGET_CONFIG.widgetPosition.side]} !important;
     bottom: ${WIDGET_CONFIG.widgetPosition.bottom} !important;
     z-index: 9999;
   }
   #snn-accessibility-button {
-    background: linear-gradient(135deg, ${WIDGET_CONFIG.colors.primary}, ${WIDGET_CONFIG.colors.primaryHover});
+    background: ${WIDGET_CONFIG.colors.primary};
     border: none;
     border-radius: ${WIDGET_CONFIG.button.borderRadius};
     cursor: pointer;
@@ -152,7 +154,7 @@ const styles = `
   #snn-accessibility-menu {
     position: fixed;
     top: 0;
-    right: 0;
+    ${WIDGET_CONFIG.widgetPosition.side}: 0;
     width: ${WIDGET_CONFIG.widgetWidth};
     height: 100vh;
     overflow-y: auto;
@@ -217,7 +219,7 @@ const styles = `
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
-    background: ${WIDGET_CONFIG.colors.primary};
+    background: #000000;
     height: ${WIDGET_CONFIG.menu.headerHeight};
     position: sticky;
     top: 0;
