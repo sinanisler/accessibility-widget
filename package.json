@@ -32,11 +32,11 @@
     "assistive-technology"
   ],
   "author": {
-    "name": "Your Name",
+    "name": "sinanisler",
     "email": "sinan@sinan.im",
     "url": "https://sinan.im"
   },
-  "license": "MIT",
+  "license": "GPL",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinanisler/accessibility-widgets.git"

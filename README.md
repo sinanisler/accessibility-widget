@@ -1,6 +1,9 @@
-# Accessibility Widget
+# Accessibility Widgets
+
 
 A comprehensive, lightweight accessibility tool that enhances web accessibility for all users. This single-file JavaScript widget provides multiple accessibility features to make websites more usable for people with disabilities.
+
+https://sinan.im
 
 ## Features
 
