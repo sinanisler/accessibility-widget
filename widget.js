@@ -115,6 +115,29 @@ const DEFAULT_WIDGET_CONFIG = {
     voiceControlActivated: 'Voice control activated',
     notSupportedBrowser: 'is not supported in this browser',
     close: 'Close'
+  },
+
+  // Voice Command Configuration - Developers can customize commands for different languages
+  voiceCommands: {
+    showMenu: ['show menu', 'open menu', 'accessibility menu'],
+    highContrast: ['high contrast'],
+    biggerText: ['bigger text', 'large text'],
+    textSpacing: ['text spacing'],
+    pauseAnimations: ['pause animations', 'stop animations'],
+    hideImages: ['hide images'],
+    dyslexiaFont: ['dyslexia friendly', 'dyslexia font'],
+    biggerCursor: ['bigger cursor', 'large cursor'],
+    lineHeight: ['line height'],
+    textAlign: ['align text', 'text align'],
+    screenReader: ['screen reader'],
+    voiceControl: ['voice command', 'voice control'],
+    resetAll: ['reset all', 'reset everything']
+  },
+
+  // Grid Layout Configuration
+  gridLayout: {
+    columns: '1fr 1fr', // Default 2-column layout (can be changed to '1fr 1fr 1fr' for 3 columns, etc.)
+    gap: '10px' // Gap between grid items
   }
 };
 
@@ -294,8 +317,8 @@ const styles = `
   
   .snn-options-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: ${WIDGET_CONFIG.menu.optionMargin};
+    grid-template-columns: ${WIDGET_CONFIG.gridLayout.columns};
+    gap: ${WIDGET_CONFIG.gridLayout.gap};
     margin-bottom: 20px;
   }
   
@@ -1118,32 +1141,8 @@ const voiceControl = {
     console.log(`Received command: ${command}`);
     
     try {
-      const commandMap = {
-        'show menu': 'snn-accessibility-button',
-        'open menu': 'snn-accessibility-button',
-        'accessibility menu': 'snn-accessibility-button',
-        'high contrast': 'highContrast',
-        'bigger text': 'biggerText',
-        'large text': 'biggerText',
-        'text spacing': 'textSpacing',
-        'pause animations': 'pauseAnimations',
-        'stop animations': 'pauseAnimations',
-        'hide images': 'hideImages',
-        'dyslexia friendly': 'dyslexiaFont',
-        'dyslexia font': 'dyslexiaFont',
-        'bigger cursor': 'biggerCursor',
-        'large cursor': 'biggerCursor',
-        'line height': 'lineHeight',
-        'align text': 'textAlign',
-        'text align': 'textAlign',
-        'screen reader': 'screenReader',
-        'voice command': 'voiceControl',
-        'voice control': 'voiceControl',
-        'reset all': 'resetAll',
-        'reset everything': 'resetAll',
-      };
-
-      if (command === 'show menu' || command === 'open menu' || command === 'accessibility menu') {
+      // Check for show menu commands
+      if (WIDGET_CONFIG.voiceCommands.showMenu.includes(command)) {
         if (!menuCache.button) menuCache.init();
         if (menuCache.button) {
           menuCache.button.click();
@@ -1151,12 +1150,40 @@ const voiceControl = {
         return;
       }
 
-      if (command === 'reset all' || command === 'reset everything') {
+      // Check for reset all commands
+      if (WIDGET_CONFIG.voiceCommands.resetAll.includes(command)) {
         resetAccessibilitySettings();
         return;
       }
 
-      const localStorageKey = commandMap[command];
+      // Build dynamic command map based on configuration
+      let localStorageKey = null;
+      
+      // Check each command group
+      if (WIDGET_CONFIG.voiceCommands.highContrast.includes(command)) {
+        localStorageKey = 'highContrast';
+      } else if (WIDGET_CONFIG.voiceCommands.biggerText.includes(command)) {
+        localStorageKey = 'biggerText';
+      } else if (WIDGET_CONFIG.voiceCommands.textSpacing.includes(command)) {
+        localStorageKey = 'textSpacing';
+      } else if (WIDGET_CONFIG.voiceCommands.pauseAnimations.includes(command)) {
+        localStorageKey = 'pauseAnimations';
+      } else if (WIDGET_CONFIG.voiceCommands.hideImages.includes(command)) {
+        localStorageKey = 'hideImages';
+      } else if (WIDGET_CONFIG.voiceCommands.dyslexiaFont.includes(command)) {
+        localStorageKey = 'dyslexiaFont';
+      } else if (WIDGET_CONFIG.voiceCommands.biggerCursor.includes(command)) {
+        localStorageKey = 'biggerCursor';
+      } else if (WIDGET_CONFIG.voiceCommands.lineHeight.includes(command)) {
+        localStorageKey = 'lineHeight';
+      } else if (WIDGET_CONFIG.voiceCommands.textAlign.includes(command)) {
+        localStorageKey = 'textAlign';
+      } else if (WIDGET_CONFIG.voiceCommands.screenReader.includes(command)) {
+        localStorageKey = 'screenReader';
+      } else if (WIDGET_CONFIG.voiceCommands.voiceControl.includes(command)) {
+        localStorageKey = 'voiceControl';
+      }
+
       if (localStorageKey) {
         // Use cached menu reference if available
         if (!menuCache.menu) menuCache.init();
@@ -1521,6 +1548,70 @@ if (document.readyState === 'loading') {
   - Error handling for browser compatibility
   - Performance optimization with DOM caching
   - Single file deployment
+  
+  Configuration Options:
+  - Customizable language/text strings
+  - Customizable voice command strings
+  - Configurable grid layout (columns and gap)
+  - All widget styling and positioning options
+  - Feature enable/disable toggles
+  
+===========================================
+
+  CONFIGURATION EXAMPLE:
+  
+  To customize the widget, define window.ACCESSIBILITY_WIDGET_CONFIG 
+  before loading the widget script:
+  
+  <script>
+  window.ACCESSIBILITY_WIDGET_CONFIG = {
+    // Customize language/text strings
+    lang: {
+      accessibilityMenu: 'Menu de Accesibilidad',
+      screenReader: 'Lector de Pantalla',
+      biggerText: 'Texto Más Grande',
+      highContrast: 'Alto Contraste',
+      // ... customize any text string
+    },
+    
+    // Customize voice commands for different languages
+    voiceCommands: {
+      showMenu: ['mostrar menú', 'abrir menú', 'menú de accesibilidad'],
+      highContrast: ['alto contraste'],
+      biggerText: ['texto más grande', 'texto grande'],
+      textSpacing: ['espaciado de texto'],
+      pauseAnimations: ['pausar animaciones', 'detener animaciones'],
+      hideImages: ['ocultar imágenes'],
+      dyslexiaFont: ['fuente para dislexia', 'fuente dislexia'],
+      biggerCursor: ['cursor más grande', 'cursor grande'],
+      lineHeight: ['altura de línea'],
+      textAlign: ['alinear texto', 'alineación de texto'],
+      screenReader: ['lector de pantalla'],
+      voiceControl: ['comando de voz', 'control de voz'],
+      resetAll: ['reiniciar todo', 'resetear todo']
+    },
+    
+    // Customize grid layout
+    gridLayout: {
+      columns: '1fr 1fr 1fr', // 3-column layout
+      gap: '15px' // Custom gap between buttons
+    },
+    
+    // Other customizable options
+    widgetWidth: '500px',
+    widgetPosition: {
+      side: 'left',
+      left: '30px',
+      bottom: '30px'
+    },
+    colors: {
+      primary: '#2196F3',
+      primaryHover: '#1976D2',
+      // ... customize any color
+    }
+  };
+  </script>
+  <script src="widget.js"></script>
   
 ===========================================
 */

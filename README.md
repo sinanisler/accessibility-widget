@@ -301,6 +301,29 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
     screenReaderOff: 'Screen reader off',
     voiceControlActivated: 'Voice control activated',
     notSupportedBrowser: 'is not supported in this browser'
+  },
+
+  // Voice Command Configuration - Customize voice commands for different languages
+  voiceCommands: {
+    showMenu: ['show menu', 'open menu', 'accessibility menu'],
+    highContrast: ['high contrast'],
+    biggerText: ['bigger text', 'large text'],
+    textSpacing: ['text spacing'],
+    pauseAnimations: ['pause animations', 'stop animations'],
+    hideImages: ['hide images'],
+    dyslexiaFont: ['dyslexia friendly', 'dyslexia font'],
+    biggerCursor: ['bigger cursor', 'large cursor'],
+    lineHeight: ['line height'],
+    textAlign: ['align text', 'text align'],
+    screenReader: ['screen reader'],
+    voiceControl: ['voice command', 'voice control'],
+    resetAll: ['reset all', 'reset everything']
+  },
+
+  // Grid Layout Configuration - Customize button grid layout
+  gridLayout: {
+    columns: '1fr 1fr', // Default 2-column layout (change to '1fr 1fr 1fr' for 3 columns, etc.)
+    gap: '10px' // Gap between grid items
   }
 };
 </script>
@@ -340,7 +363,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
 ```
 
 ### Internationalization (i18n)
-The widget supports full internationalization. You can customize all text strings:
+The widget supports full internationalization. You can customize all text strings and voice commands:
 
 ```html
 <script>
@@ -355,6 +378,23 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
     resetAllSettings: 'Restablecer Todas las Configuraciones',
     close: 'Cerrar'
     // ... add more translations as needed
+  },
+  
+  // Customize voice commands for Spanish
+  voiceCommands: {
+    showMenu: ['mostrar menú', 'abrir menú', 'menú de accesibilidad'],
+    highContrast: ['alto contraste'],
+    biggerText: ['texto más grande', 'texto grande'],
+    textSpacing: ['espaciado de texto'],
+    pauseAnimations: ['pausar animaciones', 'detener animaciones'],
+    hideImages: ['ocultar imágenes'],
+    dyslexiaFont: ['fuente para dislexia', 'fuente dislexia'],
+    biggerCursor: ['cursor más grande', 'cursor grande'],
+    lineHeight: ['altura de línea'],
+    textAlign: ['alinear texto', 'alineación de texto'],
+    screenReader: ['lector de pantalla'],
+    voiceControl: ['comando de voz', 'control de voz'],
+    resetAll: ['reiniciar todo', 'resetear todo']
   }
 };
 </script>
@@ -362,18 +402,23 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
 
 ## Voice Commands
 
-When voice control is enabled, users can activate features using these commands:
+When voice control is enabled, users can activate features using these commands (default English commands shown - fully customizable via `voiceCommands` configuration):
 
-- "show menu" / "open menu" - Opens the accessibility menu
+- "show menu" / "open menu" / "accessibility menu" - Opens the accessibility menu
 - "high contrast" - Toggles high contrast mode
-- "bigger text" - Toggles larger text size
+- "bigger text" / "large text" - Toggles larger text size
 - "text spacing" - Toggles text spacing
-- "pause animations" - Toggles animation pausing
+- "pause animations" / "stop animations" - Toggles animation pausing
 - "hide images" - Toggles image hiding
-- "dyslexia font" - Toggles dyslexia-friendly font
-- "bigger cursor" - Toggles larger cursor
+- "dyslexia friendly" / "dyslexia font" - Toggles dyslexia-friendly font
+- "bigger cursor" / "large cursor" - Toggles larger cursor
+- "line height" - Toggles line height adjustment
+- "align text" / "text align" - Cycles through text alignment options
 - "screen reader" - Toggles screen reader
-- "reset all" - Resets all accessibility settings
+- "voice command" / "voice control" - Toggles voice control
+- "reset all" / "reset everything" - Resets all accessibility settings
+
+**Note:** All voice commands can be customized for different languages using the `voiceCommands` configuration option.
 
 ## Browser Compatibility
 
