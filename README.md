@@ -5,22 +5,111 @@ A comprehensive, lightweight accessibility tool that enhances web accessibility 
 ## Features
 
 ### Core Accessibility Features
-- **High Contrast Mode** - Improves visibility for users with low vision
-- **Text Size Adjustment** - Increases font size for better readability
-- **Text Spacing** - Adds letter and word spacing for easier reading
-- **Animation Control** - Pauses animations that may cause distraction or discomfort
-- **Image Hiding** - Removes images for users who prefer text-only content
-- **Dyslexia-Friendly Font** - Uses OpenDyslexic font for users with dyslexia
-- **Cursor Enhancement** - Increases cursor size for better visibility
-- **Line Height Adjustment** - Improves text readability with increased line spacing
-- **Text Alignment** - Forces left alignment for consistent text layout
+
+#### **High Contrast Mode**
+Provides three levels of contrast enhancement:
+- **Medium**: 1.3x contrast boost for subtle improvement
+- **High**: Black background with white text and 1.5x contrast
+- **Ultra**: Black background with yellow text and 2.0x contrast for maximum visibility
+
+How it works: Applies CSS filters and background/text color overrides while preserving the widget's own styling.
+
+#### **Text Size Adjustment**
+Offers four text size options:
+- **Default**: Original website text size
+- **Medium**: 20px font size for all text elements
+- **Large**: 24px font size for improved readability
+- **X-Large**: 28px font size for maximum accessibility
+
+How it works: Uses CSS to override font-size properties across all page elements while excluding the widget interface.
+
+#### **Text Spacing**
+Enhances text readability by adding:
+- **Letter spacing**: 0.2em between characters
+- **Word spacing**: 0.3em between words
+
+How it works: Applies CSS letter-spacing and word-spacing properties to all text elements except the widget interface.
+
+#### **Animation Control**
+Completely stops all animations and transitions on the page.
+
+How it works: Uses CSS to disable all `animation` and `transition` properties, helping users with vestibular disorders or attention difficulties.
+
+#### **Image Hiding**
+Removes all images from the page for users who prefer text-only content or have slow connections.
+
+How it works: Sets `display: none` on all `<img>` elements. The system caches image queries for performance and updates every 5 seconds to catch dynamically loaded images.
+
+#### **Dyslexia-Friendly Font**
+Replaces all fonts with dyslexia-friendly alternatives:
+- Primary: Comic Sans MS (widely available dyslexia-friendly font)
+- Fallbacks: Chalkboard SE, Bradley Hand, Brush Script MT, fantasy
+
+How it works: Overrides the font-family CSS property for all elements on the page.
+
+#### **Cursor Enhancement**
+Provides a larger, high-contrast cursor for better visibility.
+
+How it works: Uses a custom SVG cursor (48x72px) with black fill and white stroke, applied via CSS cursor property.
+
+#### **Line Height Adjustment**
+Increases line spacing to 2.5x normal for improved readability.
+
+How it works: Applies CSS `line-height: 2.5` to all text elements except the widget interface.
+
+#### **Text Alignment**
+Provides three alignment options:
+- **Left**: Forces left alignment for consistent reading flow
+- **Center**: Centers all text for specific user preferences
+- **Right**: Right-aligns all text
+
+How it works: Uses CSS `text-align` property override for all text elements.
 
 ### Advanced Features
-- **Screen Reader Support** - Built-in text-to-speech functionality
-- **Voice Control** - Voice commands to control accessibility features
-- **Reduced Motion** - Respects user preferences for reduced motion
-- **Font Selection** - Choose between Arial, Times New Roman, and Verdana
-- **Color Blindness Filters** - Filters for Protanopia, Deuteranopia, Tritanopia, and Grayscale
+
+#### **Screen Reader Support**
+Built-in text-to-speech functionality that reads focused elements aloud.
+
+How it works: Uses the Web Speech API's SpeechSynthesis interface. When enabled, it listens for `focusin` events and speaks the text content, alt text, or title of focused elements. Includes error handling for unsupported browsers.
+
+#### **Voice Control**
+Voice commands to control accessibility features hands-free.
+
+How it works: Uses the Web Speech API's SpeechRecognition interface. Continuously listens for voice commands and maps them to widget functions. Includes retry logic for reliability and graceful degradation for unsupported browsers.
+
+Supported commands:
+- "show menu" / "open menu" - Opens accessibility menu
+- "high contrast" - Cycles through contrast levels
+- "bigger text" - Cycles through text sizes
+- "text spacing" - Toggles text spacing
+- "pause animations" - Toggles animation control
+- "hide images" - Toggles image visibility
+- "dyslexia font" - Toggles dyslexia-friendly font
+- "bigger cursor" - Toggles cursor enhancement
+- "screen reader" - Toggles screen reader
+- "reset all" - Resets all settings
+
+#### **Reduced Motion**
+Disables all animations and transitions for users with motion sensitivity.
+
+How it works: Similar to Animation Control but specifically targets motion-related CSS properties including pseudo-elements (::before, ::after).
+
+#### **Font Selection**
+Cycle through three professional font options:
+- **Arial**: Sans-serif, high readability
+- **Times New Roman**: Serif, traditional
+- **Verdana**: Sans-serif, designed for screen reading
+
+How it works: Applies font-family overrides via CSS classes, cycling through options when activated.
+
+#### **Color Blindness Filters**
+Provides specialized filters for different types of color blindness:
+- **Protanopia**: Red-blind color correction
+- **Deuteranopia**: Green-blind color correction  
+- **Tritanopia**: Blue-blind color correction
+- **Grayscale**: Complete color removal
+
+How it works: Uses SVG filters with color matrix transformations applied via CSS filter property to the entire document.
 
 ## Installation
 
@@ -87,6 +176,9 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   enableReducedMotion: true,
   enableFontSelection: true,
   enableColorFilter: true,
+  
+  // Widget button layout
+  widgetColumns: 2, // Number of columns in the options grid (1-4, default: 2)
   
   // Widget dimensions and position
   widgetWidth: '440px',
