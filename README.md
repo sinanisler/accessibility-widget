@@ -1,6 +1,41 @@
-# Accessibility Widget
+# Accessibility Widgets
+
 
 A comprehensive, lightweight accessibility tool that enhances web accessibility for all users. This single-file JavaScript widget provides multiple accessibility features to make websites more usable for people with disabilities.
+
+![image](https://github.com/user-attachments/assets/2d0e761e-dac5-4319-8a64-970d1b5fe28f)
+
+
+
+
+### Feature coverage against WCAG 2.1 AA criteria
+> These checks show how each feature aligns with WCAG 2.1 AA success criteria.  
+> They do **not** by themselves make a site fully compliant with WCAG, EN 301 549 or Section 508.
+> To become fully compliant you still need to run a manual checks, fix any underlying HTML/CSS/ARIA issues, test with real users, and re-test every time the site changes.
+
+
+
+
+| Feature | WCAG AA criterion(s) | EU (EN 301 549 / EAA / WAD) | US (ADA / Section 508) |
+|---------|---------------------|-----------------------------|------------------------|
+| High Contrast Mode | ✔️ | ✔️ | ✔️ |
+| Text Size Adjustment | ✔️ | ✔️ | ✔️ |
+| Text Spacing | ✔️ | ✔️ | ✔️ |
+| Line Height Adjustment | ✔️ | ✔️ | ✔️ |
+| Text Alignment (Left Align) | ✔️ (1.4.8) | ✔️ | ✔️ |
+| Cursor Enhancement | ✔️ | ✔️ | ✔️ |
+| Pause Animations | ✔️ | ✔️ | ✔️ |
+| Reduced Motion | ✔️ | ✔️ | ✔️ |
+| Hide Images | ✔️ (1.1.1) | ✔️ | ✔️ |
+| Dyslexia-Friendly / Font Select | ✔️ | ✔️ | ✔️ |
+| Screen Reader Assist | ✔️ | ✔️ | ✔️ |
+| Voice Control | ✔️ (Chrome-only API) | ◑ | ◑ |
+| Color-Blindness Filters | ✔️ | ✔️ | ✔️ |
+
+
+
+
+
 
 ## Features
 
@@ -123,12 +158,12 @@ How it works: Uses SVG filters with color matrix transformations applied via CSS
 
 ### Method 2: NPM
 ```bash
-npm install web-accessibility-widget
+npm install accessibility-widgets
 ```
 
 ### Method 3: CDN
 ```html
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 That's it! The widget will automatically initialize when the page loads.
@@ -154,7 +189,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ### Complete Configuration Options
@@ -269,7 +304,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ### Partial Configuration
@@ -393,7 +428,7 @@ window.ACCESSIBILITY_WIDGET_CONFIG = {
   }
 };
 </script>
-<script src="https://unpkg.com/web-accessibility-widget@latest/widget.js"></script>
+<script src="https://unpkg.com/accessibility-widgets@latest/widget.js"></script>
 ```
 
 ## Accessibility Standards

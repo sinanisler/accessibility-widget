@@ -1,6 +1,6 @@
 {
-  "name": "accessibility-widget",
-  "version": "1.0.0",
+  "name": "accessibility-widgets",
+  "version": "1.0.5",
   "description": "A comprehensive, lightweight accessibility widget that enhances web accessibility for all users. Provides multiple accessibility features including screen reader support, voice control, high contrast mode, and more.",
   "main": "widget.js",
   "scripts": {
@@ -32,19 +32,19 @@
     "assistive-technology"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com",
-    "url": "https://your-website.com"
+    "name": "sinanisler",
+    "email": "sinan@sinan.im",
+    "url": "https://sinan.im"
   },
-  "license": "MIT",
+  "license": "GPL",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/web-accessibility-widget.git"
+    "url": "git+https://github.com/sinanisler/accessibility-widgets.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/web-accessibility-widget/issues"
+    "url": "https://github.com/sinanisler/accessibility-widgets/issues"
   },
-  "homepage": "https://github.com/yourusername/web-accessibility-widget#readme",
+  "homepage": "https://sinan.im",
   "files": [
     "widget.js",
     "README.md",
@@ -64,7 +64,7 @@
   "peerDependencies": {},
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/yourusername"
+    "url": "https://github.com/sponsors/sinanisler"
   },
   "jsdelivr": "widget.js",
   "unpkg": "widget.js",
