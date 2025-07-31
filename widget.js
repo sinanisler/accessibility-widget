@@ -209,7 +209,7 @@ const styles = `
     width: ${WIDGET_CONFIG.widgetWidth};
     height: 100vh;
     overflow-y: auto;
-    background-color: ${WIDGET_CONFIG.colors.secondary};
+    background-color: #e2e2e2;
     padding: 0;
     display: none;
     font-family: ${WIDGET_CONFIG.typography.fontFamily};
@@ -222,25 +222,25 @@ const styles = `
     align-items: center;
     padding: ${WIDGET_CONFIG.menu.optionPadding};
     width: 100%;
-    background-color: ${WIDGET_CONFIG.colors.border};
-    color: ${WIDGET_CONFIG.colors.text};
-    border: none;
+    background-color: #ffffff;
+    color: ${WIDGET_CONFIG.colors.primary};
+    border: 2px solid #ffffff;
     cursor: pointer;
     border-radius: ${WIDGET_CONFIG.menu.borderRadius};
-    transition: background-color ${WIDGET_CONFIG.animation.transition};
+    transition: background-color ${WIDGET_CONFIG.animation.transition}, border-color ${WIDGET_CONFIG.animation.transition};
     line-height: ${WIDGET_CONFIG.typography.lineHeight} !important;
   }
   .snn-accessibility-option:hover {
-    background-color: ${WIDGET_CONFIG.colors.borderHover};
+    border-color: ${WIDGET_CONFIG.colors.primary};
   }
   .snn-accessibility-option.active {
-    background-color: ${WIDGET_CONFIG.colors.primary};
-    color: ${WIDGET_CONFIG.colors.textLight};
+    border-color: ${WIDGET_CONFIG.colors.primary};
   }
   .snn-icon {
     margin-right: 12px;
     width: ${WIDGET_CONFIG.button.iconSize};
     height: ${WIDGET_CONFIG.button.iconSize};
+    fill: ${WIDGET_CONFIG.colors.primary};
   }
   .snn-icon svg {
     width: 100%;
@@ -280,7 +280,7 @@ const styles = `
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
-    background: #000000;
+    background: ${WIDGET_CONFIG.colors.primary};
     height: ${WIDGET_CONFIG.menu.headerHeight};
     position: sticky;
     top: 0;
